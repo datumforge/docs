@@ -1,10 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Datum",
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/datumlogo.png"
-  },
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#2AB673",
@@ -45,25 +41,45 @@
   "tabs": [
     {
       "name": "Products",
-      "url": "Products"
+      "url": "products"
     },
     {
     "name": "Pricing",
-    "url": "Pricing"
+    "url": "pricing"
     },
     {
       "name": "Company",
-      "url": "Company"
+      "url": "company"
     },
     {
         "name": "Community",
-        "url": "Community"
+        "url": "community"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction", "development"]
+    },
+    {
+      "group": "System of Acquisition",
+      "pages": ["acquisition/overview","acquisition/procurement","acquisition/financing","acquisition/logistics"]
+    },
+    {
+      "group": "System of Intelligence",
+      "pages": ["intelligence/overview","intelligence/aggregation","intelligence/analytics"]
+    },
+    {
+      "group": "System of Engagement",
+      "pages": ["engagement/overview","engagement/configmanagement","engagement/metrics","engagement/reporting","engagement/seccomp"]
+    },
+    {
+      "group": "System of Sustainability",
+      "pages": ["sustainability/overview","sustainability/reduction","sustainability/reuse","sustainability/recycling"]
+    },
+    {
+      "group": "Scope",
+      "pages": ["company/companyscope"]
     }
   ],
   "footerSocials": {
