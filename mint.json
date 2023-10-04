@@ -14,12 +14,15 @@
   "topbarLinks": [
     {
       "name": "Login",
-      "url": "https://cloud.datum.net/login"
+      "url": "https://accounts.datum.net/sign-in"
     }
   ],
   "topbarCtaButton": {
     "name": "Get Started",
-    "url": "https://cloud.datum.net"
+    "url": "https://accounts.datum.net/sign-up"
+  },
+  "primaryTab": {
+    "name": "Overview"
   },
   "anchors": [
     {
@@ -40,46 +43,138 @@
   ],
   "tabs": [
     {
-      "name": "Products",
-      "url": "products"
+      "name": "Digital Infrastructure",
+      "url": "digitalinfra"
     },
     {
-    "name": "Pricing",
-    "url": "pricing"
+    "name": "GTM",
+    "url": "gotomarket"
     },
     {
-      "name": "Company",
-      "url": "company"
+      "name": "Net Zero",
+      "url": "netzero"
     },
     {
-        "name": "Community",
-        "url": "community"
-    }
+      "name": "Enterprise Features",
+      "url": "enterprisefeatures"
+    },
+    {
+      "name": "Core Platform",
+      "url": "coreplatform"
+    },
+    {
+      "name": "Company Handbook",
+      "url": "companyhandbook"
+  }
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "development"]
+      "group": "Overview",
+      "pages": ["overview/datum","overview/ourmission"]
     },
     {
-      "group": "System of Acquisition",
-      "pages": ["acquisition/overview","acquisition/procurement","acquisition/financing","acquisition/logistics"]
+      "group": "Overview",
+      "pages": ["digitalinfra/overview/overview"]
     },
     {
-      "group": "System of Intelligence",
-      "pages": ["intelligence/overview","intelligence/aggregation","intelligence/analytics"]
+      "group": "Overview",
+      "pages": ["gotomarket/overview/overview"]
     },
     {
-      "group": "System of Engagement",
-      "pages": ["engagement/overview","engagement/configmanagement","engagement/metrics","engagement/reporting","engagement/seccomp"]
+      "group": "Overview",
+      "pages": ["netzero/overview/overview"]
     },
     {
-      "group": "System of Sustainability",
-      "pages": ["sustainability/overview","sustainability/reduction","sustainability/reuse","sustainability/recycling"]
+      "group": "Overview",
+      "pages": ["enterprisefeatures/overview/overview"]
     },
     {
-      "group": "Scope",
-      "pages": ["company/companyscope"]
+      "group": "Overview",
+      "pages": ["coreplatform/overview/overview"]
+    },
+    {
+      "group": "Now",
+      "pages": ["digitalinfra/now/assetmanagement"]
+    },
+    {
+      "group": "Now",
+      "pages": ["gotomarket/now/customerdatamodel","gotomarket/now/operatorportal"]
+    },
+    {
+      "group": "Now",
+      "pages": ["netzero/now/sustainabilitydashboard"]
+    },
+    {
+      "group": "Now",
+      "pages": ["enterprisefeatures/now/auditlogging"]
+    },
+    {
+      "group": "Now",
+      "pages": ["coreplatform/now/deployment"]
+    },
+    {
+      "group": "Next",
+      "pages": ["digitalinfra/next/cloudsync"]
+    },
+    {
+      "group": "Next",
+      "pages": ["gotomarket/next/productcatalog"]
+    },
+    {
+      "group": "Next",
+      "pages": ["netzero/next/progresstracking"]
+    },
+    {
+      "group": "Next",
+      "pages": ["enterprisefeatures/next/domains"]
+    },
+    {
+      "group": "Next",
+      "pages": ["coreplatform/next/tenancy"]
+    },
+    {
+      "group": "After",
+      "pages": ["digitalinfra/after/assetdiscovery"]
+    },
+    {
+      "group": "After",
+      "pages": ["gotomarket/after/metering"]
+    },
+    {
+      "group": "After",
+      "pages": ["netzero/after/scopethree"]
+    },
+    {
+      "group": "After",
+      "pages": ["enterprisefeatures/after/compliance"]
+    },
+    {
+      "group": "After",
+      "pages": ["coreplatform/after/datalocality"]
+    },
+    {
+      "group": "Some day",
+      "pages": ["digitalinfra/someday/artifacts"]
+    },
+    {
+      "group": "Some day",
+      "pages": ["gotomarket/someday/workflows"]
+    },
+    {
+      "group": "Some day",
+      "pages": ["netzero/someday/storedcarbon"]
+    },
+    {
+      "group": "Some day",
+      "pages": ["enterprisefeatures/someday/skynet"]
+    },
+    {
+      "group": "Some day",
+      "pages": ["coreplatform/someday/skynet"]
+    },
+    {
+      "group": "Company Handbook",
+      "pages": ["companyhandbook/whatwebelieve","companyhandbook/values","companyhandbook/strategy","companyhandbook/marketingstrategy","companyhandbook/businessopportunity","companyhandbook/scratchpad"]
     }
   ],
   "footerSocials": {
