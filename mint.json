@@ -33,7 +33,7 @@
     {
       "name": "Join our Slack",
       "icon": "slack",
-      "url": "https://mindsdb.com/joincommunity"
+      "url": "https://join.slack.com/t/datumforge/signup"
     },
     {
       "name": "GitHub",
@@ -43,7 +43,7 @@
     {
       "name": "What's New",
       "icon": "rocket-launch",
-      "url": "https://datumtechnology.com"
+      "url": "https://datum.net"
     }
   ],
   "tabs": [
