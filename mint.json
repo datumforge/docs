@@ -24,6 +24,11 @@
   "primaryTab": {
     "name": "Overview"
   },
+  "analytics": {
+    "posthog": {
+        "apiKey": "phc_slCDlPhLoDVHngbHkNKC45iLvh9Y88FxQWS3DA9f1oB"
+    }
+},
   "anchors": [
     {
       "name": "Join our Slack",
@@ -71,6 +76,10 @@
     {
       "group": "Overview",
       "pages": ["overview/datum","overview/ourmission"]
+    },
+    {
+      "group": "Contributing",
+      "pages": ["overview/development"]
     },
     {
       "group": "Overview",
@@ -178,7 +187,6 @@
     }
   ],
   "footerSocials": {
-    "github": "https://github.com/datumforge",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "github": "https://github.com/datumforge"
   }
 }
