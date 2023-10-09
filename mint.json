@@ -78,8 +78,12 @@
       "pages": ["overview/datum","overview/ourmission"]
     },
     {
+      "group": "Approaches",
+      "pages": ["overview/integratedexperiences", "overview/productstructure"]
+    },
+    {
       "group": "Contributing",
-      "pages": ["overview/development"]
+      "pages": ["overview/development", "overview/styleguide"]
     },
     {
       "group": "Overview",
@@ -119,7 +123,7 @@
     },
     {
       "group": "Now",
-      "pages": ["coreplatform/now/deployment"]
+      "pages": ["coreplatform/now/architectureprinciples","coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity","coreplatform/now/communicationchannels"]
     },
     {
       "group": "Next",
@@ -183,7 +187,7 @@
     },
     {
       "group": "Company Handbook",
-      "pages": ["companyhandbook/whatwebelieve","companyhandbook/values","companyhandbook/strategy","companyhandbook/marketingstrategy","companyhandbook/businessopportunity","companyhandbook/scratchpad","companyhandbook/culturebranding"]
+      "pages": ["companyhandbook/whatwebelieve","companyhandbook/values","companyhandbook/strategy","companyhandbook/marketingstrategy","companyhandbook/businessopportunity","companyhandbook/scratchpad","companyhandbook/culturebranding", "companyhandbook/tooling"]
     }
   ],
   "footerSocials": {
