@@ -1,0 +1,28 @@
+---
+title: 'Development Tooling / Standards'
+sidebarTitle: 'Development Tooling / Standards'
+description: 'An overview of the tooling, packages, standards used to develop within the Datum ecosystem'
+icon: ''
+---
+
+## Languages
+
+As a general standard we build using Golang or Rust; this is primiarly a decision driven from these factors:
+
+- All the cool kids do it
+- It's the language of choice from the technical co-founder (@matoszz)
+- It's the language of choice of the technical co-founder's hipster friends
+- There's [science / research](https://greenlab.di.uminho.pt/wp-content/uploads/2017/10/sleFinal.pdf) substantiating the efficiency of the programming languages in comparison to others which is inline with Datum's core values
+
+## Middleware
+
+- [ent](https://entgo.io/) for an ORM / database interface
+- [gqlgen](https://gqlgen.com/getting-started/) for graph generation
+- [atlas](https://atlasgo.io/) for schema management
+
+
+## Shared libraries
+
+- Should be the lowest denominator
+- Create a repo per package so they can be managed independently vs. a monorepo for all shared packages
+- Avoid importing other shared libraries into a library

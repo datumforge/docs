@@ -1,0 +1,28 @@
+---
+title: 'Core Authorization and RBAC constructs'
+sidebarTitle: 'Core Authorization and RBAC constrcuts'
+description: ''
+icon: ''
+---
+While RBAC may traditionally fall under the category of "enterprise features" it's also an integral part of any system. From the author's experience, it's best to create this foundational layer and invest more time into understanding how you will use / manage / extend your RBAC constructs into the system early on rather than needing to re-tool / rebuild components of your system as you're trying to scale it.
+
+To that end, our primary evaluations have revolved around two major open-source projects / libraries:
+
+- [authzed](https://authzed.com/)
+- [openfga](https://openfga.dev/)
+
+OpenFGA is the current preference, for these high level reasions:
+
+- The local playground is dope
+- The documentation is not only thorough but has practically applied examples of the framework
+- There is an easy to understand, common language DSL
+- When testing it out, it "just worked"!
+
+## Schema creation
+
+Stub discussing how we started using an entitlements based model
+
+## Object definitions
+
+Stub for object definitions
+
