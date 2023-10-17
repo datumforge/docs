@@ -8,21 +8,25 @@ An identity is a collection of verifiable claims one makes about oneself. In the
 
 ## Principles of Identity
 
-### Datum does not manage identities
+### There is only one source of truth 
 
-Datum makes no assertions about what a subject is beyond their ability to present valid tokens to services and the format of those tokens. Identity management functionality - such as profile updates, password resets, and so on - is not included in the Datum ecosystem.
+When the system is configured to rely on an external identity provider, Datum makes no assertions about what a subject is beyond their ability to present valid tokens to services and the format of those tokens. Identity management functionality - such as profile updates, password resets, and so on - won't function as this would be the task for the external identity provider.
+
+If using Datum as the identity provider + management plane (preferred), all aspects of the User can be modified assuming permissions to do so are granted through the admin console. 
 
 #### Rationale
 
-Organizations often have their own identity management lifecycles and leverage external solutions for managing their users, service accounts, and other identifiable subjects. Rather than implement this functionality and require reconciliation of state between upstream identity providers and Datum services, it is easier to instead leverage open standards to connect identity management services to the Datum ecosystem.
+Organizations often have their own identity management lifecycles and leverage external solutions for managing their users, service accounts, and other identifiable subjects. This approach requires reconciliation of state between upstream identity providers and Datum services, and the upstream is assumed to be the source of truth.
+
+If using Datum as the identity provider, modification of the user attribute from an upstream integration will be configured within the integration and only certain metadata on objects can be modified by the upstream provider.
 
 #### Implications
 
-Any deployment of Datum requires an external identity management solution. Additionally, because there is no identity management service in Datum, services must assume that any valid token they receive represents an existing subject in an active state.
+Requires an external identity management solution, and to prevent "drift" or conflicts, certain data on the User objects will not be modifible as it's assumed the source of truth of the record lives outside the system itself.
 
-### Identity is conveyed through JWTs and well-formed URNs
+### Identity can be conveyed through JWTs and well-formed URNs
 
-As an alternative to identity management, services authenticate subjects using JWTs from a known issuer as security tokens. Subject identifiers are conveyed using URNs in the `Datum` namespace in JWT claims.
+As an alternative to identity management, services authenticate subjects using JWTs from a known issuer as security tokens. Subject identifiers are conveyed using URNs in the `datum` namespace in JWT claims.
 
 #### Rationale
 

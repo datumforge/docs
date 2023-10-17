@@ -103,11 +103,11 @@
     },
     {
       "group": "Overview",
-      "pages": ["coreplatform/overview/overview"]
+      "pages": ["coreplatform/overview/overview","coreplatform/overview/architectureprinciples"]
     },
     {
       "group": "Now",
-      "pages": ["digitalinfra/now/assetmanagement"]
+      "pages": ["digitalinfra/now/domainassets","digitalinfra/now/physicalassets","digitalinfra/now/logicalassets","digitalinfra/now/networkassets","digitalinfra/now/systemassets"]
     },
     {
       "group": "Now",
@@ -119,15 +119,15 @@
     },
     {
       "group": "Now",
-      "pages": ["enterprisefeatures/now/auditlogging"]
+      "pages": ["enterprisefeatures/now/rbac","enterprisefeatures/now/productassortment","enterprisefeatures/now/slasupport","enterprisefeatures/now/billing","enterprisefeatures/now/groupmanagement","enterprisefeatures/now/integrations","enterprisefeatures/now/analytics"]
     },
     {
       "group": "Now",
-      "pages": ["coreplatform/now/architectureprinciples","coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity","coreplatform/now/communicationchannels", "coreplatform/now/persistence", "coreplatform/now/rbac"]
+      "pages": ["coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity", "coreplatform/now/persistence", "coreplatform/now/rbac","coreplatform/now/apitoken"]
     },
     {
       "group": "Next",
-      "pages": ["digitalinfra/next/cloudsync"]
+      "pages": ["digitalinfra/next/cloudsync","digitalinfra/next/assetdiscovery","digitalinfra/next/applicationdiscovery"]
     },
     {
       "group": "Next",
@@ -139,15 +139,15 @@
     },
     {
       "group": "Next",
-      "pages": ["enterprisefeatures/next/domains"]
+      "pages": ["enterprisefeatures/next/domains","enterprisefeatures/next/auditlogging","enterprisefeatures/next/communnicationchannels","enterprisefeatures/next/esignatures","enterprisefeatures/next/secrets"]
     },
     {
       "group": "Next",
-      "pages": ["coreplatform/next/tenancy"]
+      "pages": ["coreplatform/next/metricsandmonitoring","coreplatform/next/agent","coreplatform/next/clients","coreplatform/next/releasenotes","coreplatform/next/systemstatusreporting","coreplatform/next/vulnerabilitymanagement"]
     },
     {
       "group": "After",
-      "pages": ["digitalinfra/after/assetdiscovery"]
+      "pages": ["digitalinfra/after/systemusage","digitalinfra/after/applicationusage"]
     },
     {
       "group": "After",
@@ -159,11 +159,11 @@
     },
     {
       "group": "After",
-      "pages": ["enterprisefeatures/after/compliance"]
+      "pages": ["enterprisefeatures/after/contractmanagement","enterprisefeatures/after/datalocality","enterprisefeatures/after/gdprdataprivacy","enterprisefeatures/after/soc2isocompliance","enterprisefeatures/after/webhooks"]
     },
     {
       "group": "After",
-      "pages": ["coreplatform/after/datalocality"]
+      "pages": ["coreplatform/after/datalocality","coreplatform/after/complianceplatform","coreplatform/after/dedicatedtenant","coreplatform/after/securityplatform"]
     },
     {
       "group": "Some day",
@@ -179,7 +179,7 @@
     },
     {
       "group": "Some day",
-      "pages": ["enterprisefeatures/someday/skynet"]
+      "pages": ["enterprisefeatures/someday/syntheticmonitoring"]
     },
     {
       "group": "Some day",
