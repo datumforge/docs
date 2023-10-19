@@ -11,6 +11,7 @@
     "suggestEdit": true,
     "raiseIssue": true
   },
+  "openapi": "/openapi.json",
   "topbarLinks": [
     {
       "name": "Login",
@@ -41,10 +42,10 @@
       "url": "https://github.com/datumforge"
     },
     {
-      "name": "What's New",
-      "icon": "rocket-launch",
-      "url": "https://datum.net"
-    }
+      "name": "API References",
+      "icon": "code",
+      "url": "api-reference"
+  }
   ],
   "tabs": [
     {
@@ -70,7 +71,11 @@
     {
       "name": "Company Handbook",
       "url": "companyhandbook"
-  }
+    },
+    {
+    "name": "API Reference",
+    "url": "api-reference"
+    }
   ],
   "navigation": [
     {
@@ -192,6 +197,52 @@
     {
       "group": "Development Standards",
       "pages": ["companyhandbook/oss/developmentstandards"]
+    },
+    {
+      "group": "Integration",
+      "pages": [
+        "api-reference/integration/list-integrations",
+        "api-reference/integration/create-a-new-integration",
+        "api-reference/integration/find-a-integration-by-id",
+        "api-reference/integration/deletes-a-integration-by-id",
+        "api-reference/integration/updates-a-integration",
+        "api-reference/integration/find-the-attached-organization"
+      ]
+    },
+    {
+      "group": "Membership",
+      "pages": [
+        "api-reference/membership/list-memberships",
+        "api-reference/membership/create-a-new-membership",
+        "api-reference/membership/find-a-membership-by-id",
+        "api-reference/membership/deletes-a-membership-by-id",
+        "api-reference/membership/updates-a-membership",
+        "api-reference/membership/find-the-attached-organization",
+        "api-reference/membership/find-the-attached-user"
+      ]
+    },
+    {
+      "group": "Organization",
+      "pages": [
+        "api-reference/organization/list-organizations",
+        "api-reference/organization/create-a-new-organization",
+        "api-reference/organization/find-a-organization-by-id",
+        "api-reference/organization/deletes-a-organization-by-id",
+        "api-reference/organization/updates-a-organization",
+        "api-reference/organization/list-attached-integrations",
+        "api-reference/organization/list-attached-memberships"
+      ]
+    },
+    {
+      "group": "User",
+      "pages": [
+        "api-reference/user/list-users",
+        "api-reference/user/create-a-new-user",
+        "api-reference/user/find-a-user-by-id",
+        "api-reference/user/deletes-a-user-by-id",
+        "api-reference/user/updates-a-user",
+        "api-reference/user/list-attached-memberships"
+      ]
     }
   ],
   "footerSocials": {
