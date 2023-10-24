@@ -3,64 +3,80 @@ title: 'Overview'
 sidebarTitle: 'Overview'
 description: ''
 ---
-<Note>
-Each of Datum's development focus areas are grouped based on the sequencening approach; you'll see on the left we've categorized this as "Now, Next, After, and Some day"
-</Note>
 
-Audit logging
-    ability to export the data
-RBAC
-Product Security
-SLA / Support
-Single Sign on
-Team Management
-GDPR / Data Privacy
-    Right to be forgotten
-    Freeze / manage records
-    create the processes / information + comms
-Compliance
-    SOC2, ISO, GDPR public attestations
-    Safebase / security and trust center
-Deployment Options
-    Deploying to other countries / data locality
-    Offering the ability to deploy the stack in other countries or to satisfy local regulatory requiremets
-Reporting / Analytics
-Product Assortment (different levels / implementations of the product)
-Integrations
-Contracts management + storage
-eSignatures
-Create notifications + metadata around contracts
-Billing
-    They can upgrade / downgrand plans
-    They can set spending limits around anything usage based
-    They can view / download their invoices
-    Store / manage payment methods
-    Set billing contact email / notifications
-    Set billing addresses 
-    Ability to set a tax ID to be set on the invoice
-    Ability to generate invoices
-Ability for the platform to be purchased via channel partners
-Notifications
-    Ability to configure notifications / feed on events in the system
-Domains
-    ability to create vanity domains
-    ability to do verified domains
-Open soure deployment options
+This section covers the features we believe fall into the category of "enterprise ready" - we took a note from Replicated's [enterprise ready](https://www.enterpriseready.io/#features) feature list. While it may be slightly confusing / co-mingled, this section is different from the "Core Platform" feature definitions, even though the naming might be similar. For example, while the system itself may output audit logs which we aggregate and use to provide a platform that delights our customers, this is not the same as a feature a customer could take advantage of and thus is defined separately.
 
-Building / running / releasing the stack
-    Should be able to create the entire stack on-demand during the CI / build process
-    The system should be able to be tested end to end
-    We should be able to validate / test external interfaces and integrations
-    We should have the code that touches external entities / integrations encapsulated
-
-External directory configuration / integration
-    "Authenticate with Azure AD"
-Secrets Management
-Webhooks
-Event exposure
-
-Legal agreements, cookie agreements - common paper
-
-Declarative, open source operator portal
-
-Metrics / Monitoring / Synthetic Monitoring
+<CardGroup cols={2}>
+  <Card
+    title="Product Assortment"
+    icon="screwdriver-wrench"
+  >
+    Offer different versions of a product to meet the differing needs of enterprise buyers
+  </Card>
+  <Card
+    title="Single Sign On"
+    icon="stars"
+  >
+    Enable enterprises to manage users from a single, central directory
+  </Card>
+    <Card
+    title="Audit Logs"
+    icon="leaf"
+  >
+    Provide admins with a detailed trail of account activity
+  </Card>
+  <Card
+    title="Role Based Access Control"
+    icon="code"
+  >
+    Allow for the separation of privileges by user role
+  </Card>
+  <Card
+    title="Change Management"
+    icon="code"
+  >
+    Empower admins with tools and collateral to roll out features and product changes
+  </Card>
+  <Card
+    title="Product Security"
+    icon="code"
+  >
+    Demonstrable application security through best practices
+  </Card>
+  <Card
+    title="Deployment Options"
+    icon="code"
+  >
+    Balance data security concerns and application overhead with flexible deployment options
+  </Card>
+  <Card
+    title="Team Management"
+    icon="code"
+  >
+    Enable collaboration with coworkers in an account that is centrally managed
+  </Card>
+  <Card
+    title="Integrations"
+    icon="code"
+  >
+    Create data portability by allowing customers to pull data out and push data into your application
+  </Card>
+  <Card
+    title="Reporting and Analytics"
+    icon="code"
+  >
+    Reports allow admins to demonstrate value gained from the use of an application
+  </Card>
+  <Card
+    title="SLA and Support"
+    icon="code"
+  >
+    A primer on the basics of enterprise SLA & support requirements
+  </Card>
+  <Card
+    title="GDPR"
+    icon="code"
+  >
+    The European Union’s General Data Protection Regulation
+  </Card>
+</CardGroup>
