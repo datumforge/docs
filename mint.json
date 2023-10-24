@@ -100,7 +100,7 @@
     },
     {
       "group": "Overview",
-      "pages": ["netzero/overview/overview"]
+      "pages": ["netzero/overview/overview","netzero/overview/datacenters"]
     },
     {
       "group": "Overview",
@@ -128,7 +128,7 @@
     },
     {
       "group": "Now",
-      "pages": ["coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity", "coreplatform/now/persistence", "coreplatform/now/rbac","coreplatform/now/apitoken"]
+      "pages": ["coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity", "coreplatform/now/persistence", "coreplatform/now/rbac","coreplatform/now/apitoken","coreplatform/now/authentication"]
     },
     {
       "group": "Next",
@@ -144,7 +144,7 @@
     },
     {
       "group": "Next",
-      "pages": ["enterprisefeatures/next/domains","enterprisefeatures/next/auditlogging","enterprisefeatures/next/communnicationchannels","enterprisefeatures/next/esignatures","enterprisefeatures/next/secrets"]
+      "pages": ["enterprisefeatures/next/domains","enterprisefeatures/next/auditlogging","enterprisefeatures/next/communicationchannels","enterprisefeatures/next/esignatures","enterprisefeatures/next/secrets"]
     },
     {
       "group": "Next",

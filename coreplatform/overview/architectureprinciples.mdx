@@ -11,7 +11,7 @@ icon: ''
 
 ## Services should be replacable
 
-To keep the bar of entry into using Datum low, we provide the ability to pick and choose the components that you run, as well as the ability to replace services we offer with existing tooling that you have today. For example, Datum provides an IP Address Management (IPAM) service, but we recognize that Netbox is a commonly used tool to manage IP addresses. If you want to use Netbox instead of the Datum IPAM service, you should be able to do so by building a thin shim service that translates the expected IPAM API to Netbox's API.
+To keep the bar of entry into using Datum low, we provide the ability to pick and choose the components that you run, as well as the ability to replace services we offer with existing tooling that you have today. For example, Datum will have an IP Address Management (IPAM) service in it's ecosystem, but we recognize that Netbox is a commonly used tool to manage IP addresses. If you want to use Netbox instead of the Datum IPAM service, you should be able to do so by building a thin shim service that translates the expected IPAM API to Netbox's API.
 
 ## Communication between services should be avoided
 
@@ -23,8 +23,8 @@ To meet the diverse needs of infrastructure deployment, we provide APIs that all
 
 ## Events, events, and more events
 
-To keep services as small and composable as possible, we aim to follow the Unix philosophy of doing one thing well. When an action is taken against a resource, an event representing that action should be created. For example, when an instance is created in the Instance API, an instance creation event will be sent to the message queue, signaling that the instance was created. From there, any downstream services that may care about an instance being created can see this and perform any necessary actions. The prevents Instance API from having code that manages X number of instance types. Instead that logic is moved into individual services that receive a message from the message off the message queue and perform the action.
+To keep services as small and composable as possible, we aim to follow the Unix philosophy of doing one thing well. When an action is taken against a resource, an event representing that action should be created. For example, when an asset is created in our future Asset API, an asset creation event will be sent to the message queue, signaling that the instance was created. From there, any downstream services that may care about an instance being created can see this and perform any necessary actions.
 
-## Only provide a base set of providers
+## Plugin-oriented architecture
 
 Datum focuses on building a base set of providers and allows the experts and owners of additional systems to create and maintain their own providers. By doing so, Datum can remain focused on providing core functionality without dedicating significant resources to maintaining providers for all the different resources available.
