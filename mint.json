@@ -108,7 +108,7 @@
     },
     {
       "group": "Overview",
-      "pages": ["coreplatform/overview/overview","coreplatform/overview/architectureprinciples"]
+      "pages": ["coreplatform/overview/overview","coreplatform/overview/architecture"]
     },
     {
       "group": "Now",
