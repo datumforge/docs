@@ -192,7 +192,7 @@
     },
     {
       "group": "Company Handbook",
-      "pages": ["companyhandbook/whatwebelieve","companyhandbook/values","companyhandbook/strategy","companyhandbook/marketingstrategy","companyhandbook/businessopportunity","companyhandbook/scratchpad","companyhandbook/culturebranding", "companyhandbook/tooling"]
+      "pages": ["companyhandbook/whatwebelieve","companyhandbook/values","companyhandbook/strategy","companyhandbook/marketingstrategy","companyhandbook/businessopportunity","companyhandbook/culturebranding", "companyhandbook/tooling"]
     },
     {
       "group": "Development Standards",
