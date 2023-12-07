@@ -2,6 +2,10 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Datum",
   "favicon": "/favicon.png",
+  "logo": {
+    "light": "/logo/logo.png",
+    "dark": "/logo/logo.png"
+  },
   "colors": {
     "primary": "#2AB673",
     "light": "#55D799",
@@ -198,52 +202,173 @@
       "group": "Development Standards",
       "pages": ["companyhandbook/oss/developmentstandards"]
     },
-    {
-      "group": "Integration",
-      "pages": [
-        "api-reference/integration/list-integrations",
-        "api-reference/integration/create-a-new-integration",
-        "api-reference/integration/find-a-integration-by-id",
-        "api-reference/integration/deletes-a-integration-by-id",
-        "api-reference/integration/updates-a-integration",
-        "api-reference/integration/find-the-attached-organization"
-      ]
-    },
-    {
-      "group": "Membership",
-      "pages": [
-        "api-reference/membership/list-memberships",
-        "api-reference/membership/create-a-new-membership",
-        "api-reference/membership/find-a-membership-by-id",
-        "api-reference/membership/deletes-a-membership-by-id",
-        "api-reference/membership/updates-a-membership",
-        "api-reference/membership/find-the-attached-organization",
-        "api-reference/membership/find-the-attached-user"
-      ]
-    },
-    {
-      "group": "Organization",
-      "pages": [
-        "api-reference/organization/list-organizations",
-        "api-reference/organization/create-a-new-organization",
-        "api-reference/organization/find-a-organization-by-id",
-        "api-reference/organization/deletes-a-organization-by-id",
-        "api-reference/organization/updates-a-organization",
-        "api-reference/organization/list-attached-integrations",
-        "api-reference/organization/list-attached-memberships"
-      ]
-    },
-    {
-      "group": "User",
-      "pages": [
-        "api-reference/user/list-users",
-        "api-reference/user/create-a-new-user",
-        "api-reference/user/find-a-user-by-id",
-        "api-reference/user/deletes-a-user-by-id",
-        "api-reference/user/updates-a-user",
-        "api-reference/user/list-attached-memberships"
-      ]
-    }
+      {
+        "group": "AccessToken",
+        "pages": [
+          "api-reference/accesstoken/list-accesstokens",
+          "api-reference/accesstoken/create-a-new-accesstoken",
+          "api-reference/accesstoken/find-a-accesstoken-by-id",
+          "api-reference/accesstoken/deletes-a-accesstoken-by-id",
+          "api-reference/accesstoken/updates-a-accesstoken",
+          "api-reference/accesstoken/find-the-attached-user"
+        ]
+      },
+      {
+        "group": "Entitlement",
+        "pages": [
+          "api-reference/entitlement/list-entitlements",
+          "api-reference/entitlement/create-a-new-entitlement",
+          "api-reference/entitlement/find-a-entitlement-by-id",
+          "api-reference/entitlement/deletes-a-entitlement-by-id",
+          "api-reference/entitlement/updates-a-entitlement",
+          "api-reference/entitlement/find-the-attached-organization"
+        ]
+      },
+      {
+        "group": "GroupSetting",
+        "pages": [
+          "api-reference/groupsetting/list-groupsettings",
+          "api-reference/groupsetting/create-a-new-groupsetting",
+          "api-reference/groupsetting/find-a-groupsetting-by-id",
+          "api-reference/groupsetting/deletes-a-groupsetting-by-id",
+          "api-reference/groupsetting/updates-a-groupsetting",
+          "api-reference/groupsetting/find-the-attached-group"
+        ]
+      },
+      {
+        "group": "Group",
+        "pages": [
+          "api-reference/group/list-groups",
+          "api-reference/group/create-a-new-group",
+          "api-reference/group/find-a-group-by-id",
+          "api-reference/group/deletes-a-group-by-id",
+          "api-reference/group/updates-a-group",
+          "api-reference/group/find-the-attached-organization",
+          "api-reference/group/find-the-attached-groupsetting",
+          "api-reference/group/list-attached-users"
+        ]
+      },
+      {
+        "group": "Integration",
+        "pages": [
+          "api-reference/integration/list-integrations",
+          "api-reference/integration/create-a-new-integration",
+          "api-reference/integration/find-a-integration-by-id",
+          "api-reference/integration/deletes-a-integration-by-id",
+          "api-reference/integration/updates-a-integration",
+          "api-reference/integration/find-the-attached-organization"
+        ]
+      },
+      {
+        "group": "OauthProvider",
+        "pages": [
+          "api-reference/oauthprovider/list-oauthproviders",
+          "api-reference/oauthprovider/create-a-new-oauthprovider",
+          "api-reference/oauthprovider/find-a-oauthprovider-by-id",
+          "api-reference/oauthprovider/deletes-a-oauthprovider-by-id",
+          "api-reference/oauthprovider/updates-a-oauthprovider",
+          "api-reference/oauthprovider/find-the-attached-organization"
+        ]
+      },
+      {
+        "group": "OhAuthTooToken",
+        "pages": [
+          "api-reference/ohauthtootoken/list-ohauthtootokens",
+          "api-reference/ohauthtootoken/create-a-new-ohauthtootoken",
+          "api-reference/ohauthtootoken/find-a-ohauthtootoken-by-id",
+          "api-reference/ohauthtootoken/deletes-a-ohauthtootoken-by-id",
+          "api-reference/ohauthtootoken/updates-a-ohauthtootoken"
+        ]
+      },
+      {
+        "group": "OrganizationSetting",
+        "pages": [
+          "api-reference/organizationsetting/list-organizationsettings",
+          "api-reference/organizationsetting/create-a-new-organizationsetting",
+          "api-reference/organizationsetting/find-a-organizationsetting-by-id",
+          "api-reference/organizationsetting/deletes-a-organizationsetting-by-id",
+          "api-reference/organizationsetting/updates-a-organizationsetting",
+          "api-reference/organizationsetting/find-the-attached-organization"
+        ]
+      },
+      {
+        "group": "Organization",
+        "pages": [
+          "api-reference/organization/list-organizations",
+          "api-reference/organization/create-a-new-organization",
+          "api-reference/organization/find-a-organization-by-id",
+          "api-reference/organization/deletes-a-organization-by-id",
+          "api-reference/organization/updates-a-organization",
+          "api-reference/organization/list-attached-childrens",
+          "api-reference/organization/list-attached-entitlements",
+          "api-reference/organization/list-attached-groups",
+          "api-reference/organization/list-attached-integrations",
+          "api-reference/organization/list-attached-oauthproviders",
+          "api-reference/organization/find-the-attached-organization",
+          "api-reference/organization/find-the-attached-organizationsetting",
+          "api-reference/organization/list-attached-users"
+        ]
+      },
+      {
+        "group": "PersonalAccessToken",
+        "pages": [
+          "api-reference/personalaccesstoken/list-personalaccesstokens",
+          "api-reference/personalaccesstoken/create-a-new-personalaccesstoken",
+          "api-reference/personalaccesstoken/find-a-personalaccesstoken-by-id",
+          "api-reference/personalaccesstoken/deletes-a-personalaccesstoken-by-id",
+          "api-reference/personalaccesstoken/updates-a-personalaccesstoken",
+          "api-reference/personalaccesstoken/find-the-attached-user"
+        ]
+      },
+      {
+        "group": "RefreshToken",
+        "pages": [
+          "api-reference/refreshtoken/list-refreshtokens",
+          "api-reference/refreshtoken/create-a-new-refreshtoken",
+          "api-reference/refreshtoken/find-a-refreshtoken-by-id",
+          "api-reference/refreshtoken/deletes-a-refreshtoken-by-id",
+          "api-reference/refreshtoken/updates-a-refreshtoken"
+        ]
+      },
+      {
+        "group": "Session",
+        "pages": [
+          "api-reference/session/list-sessions",
+          "api-reference/session/create-a-new-session",
+          "api-reference/session/find-a-session-by-id",
+          "api-reference/session/deletes-a-session-by-id",
+          "api-reference/session/updates-a-session",
+          "api-reference/session/find-the-attached-user"
+        ]
+      },
+      {
+        "group": "UserSetting",
+        "pages": [
+          "api-reference/usersetting/list-usersettings",
+          "api-reference/usersetting/create-a-new-usersetting",
+          "api-reference/usersetting/find-a-usersetting-by-id",
+          "api-reference/usersetting/deletes-a-usersetting-by-id",
+          "api-reference/usersetting/updates-a-usersetting",
+          "api-reference/usersetting/find-the-attached-user"
+        ]
+      },
+      {
+        "group": "User",
+        "pages": [
+          "api-reference/user/list-users",
+          "api-reference/user/create-a-new-user",
+          "api-reference/user/find-a-user-by-id",
+          "api-reference/user/deletes-a-user-by-id",
+          "api-reference/user/updates-a-user",
+          "api-reference/user/list-attached-accesstokens",
+          "api-reference/user/list-attached-groups",
+          "api-reference/user/list-attached-organizations",
+          "api-reference/user/list-attached-personalaccesstokens",
+          "api-reference/user/list-attached-refreshtokens",
+          "api-reference/user/list-attached-sessions",
+          "api-reference/user/find-the-attached-usersetting"
+        ]
+      }
   ],
   "footerSocials": {
     "github": "https://github.com/datumforge"
