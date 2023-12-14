@@ -3,13 +3,17 @@
   "name": "Datum",
   "favicon": "/favicon.png",
   "logo": {
-    "light": "/logo/logo.png",
-    "dark": "/logo/logo.png"
+    "light": "/logo/logo-light.png",
+    "dark": "/logo/logo-dark.png"
   },
   "colors": {
-    "primary": "#2AB673",
-    "light": "#55D799",
-    "dark": "#117866"
+    "primary": "#F08C00",
+    "light": "#F08C00",
+    "dark": "#F08C00",
+    "background": {
+      "light": "#E1EBEA",
+      "dark": "#383238"
+    }
   },
   "feedback": {
     "suggestEdit": true,
