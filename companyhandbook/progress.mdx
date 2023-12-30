@@ -1,0 +1,99 @@
+---
+title: 'Current Progress'
+sidebarTitle: 'Current Progress'
+description: 'Current Development Progress'
+---
+
+# Progress
+
+A high-level summary of progress to-date is below, as well as sub-section details for those interested. Many of the below statements are relatively technical, so for the non- technical: as of Jan 2024 the current state of the product is mostly what we can refer to as a "template" or "scaffold", which is to say that it's the bones of a system and not a system itself. When thinking about how to approach development of our system(s) and what the most re-usable to other(s) the pieces of that work would be (especially as it relates to Datums values), instead of jumping right into something "digital infrastructure" specific, or "sustainability" specific, building some of the foundational aspsects of what one would need to start a new B2B SaaS compahy (or any company, really) looks like appealing targets.
+
+Emphasis has been placed on foundational components such as Authentication and Authorization constructs, as well as investment into the creation of re-usable libraries over bespoke, brittle, "quick to market" oriented development. Test coverage, build / test / release cadences, day 1 change management controls, etc., are also the most practiced mucle of the founding engineers (Matt Anderson [@matoszz](https://github.com/matoszz) and Sarah Funkhouser @golanglemonade) so this was believed to be the most worthwhile starting point and also is perceived as a future escalator. Given most of the investments to-date have been around things like relationship heirarchy, user sign up / registration / communication flows, are all re-usable for any product we will develop and is created on top of a stable foundation rather than a product users could pay us for in the market but which would need replaced (and likely at a high cost once the platform is already live).
+
+## Summary
+
+Given the general desire to build out an "[Enterprise Ready](https://www.enterprisegrade.io/)" Platform, initial emphasis and development effort have been applied towards foundational constructs around:
+
+- Authentication
+- Authorization
+- Encryption / Signing
+- Key / Token management
+- Certificate generation / handling
+- Policy constructs
+- Hardened defaults
+
+Implementing these types of features "after the fact" as many startups are faced with is not only far more difficult to do but is often done partially and/or incorrectly in an attempt to not disrupt customers rather than investing the time up front to create scalable systems and libraries within the codebase(s). 
+
+## Build / Release Ecosystem
+
+- Setup of Datum's buildkite organization, fully [public](https://buildkite.com/datum)
+- Setup of runners / VM's / agents
+- Setup / configuration / public notifications around [detected vulnerabilities](https://buildkite.com/datum/datum/builds/1231)
+- Code / test coverage reporting
+- Vulnerability scanning and reporting
+- Overall decent unit test code coverage
+- Authorization / permissions testing
+- Artifact signing, publishing
+- OpenAPI spec generation
+- Release changelogs
+
+## API's
+
+- Personal org and regular Organization creation with recursive parent / child relationships
+- Group creation, membership constructs in-flight
+- Organization CRUD
+- Group CRUD
+- User CRUD
+- Personal access token CRUD
+
+
+## Authorizations and Policies
+
+- Initial entitlement-based permissions moodel
+- Privacy hook / interceptor implementation + integration with FGA
+- Relationship tuple creation, testing, validation for several objects
+- Base policy creation
+
+## Authentication flows
+
+- Username and Password
+- Access and Refresh Token Issuance
+- Session Token issuance
+- Email provider Integration (Sendgrid)
+- Email template development / libraries / ability to easily create + send new email templates
+- Forgot password / reset password
+- Resend verification email
+
+## Security
+
+- Vulnerability scanning, remediation, and [reporting](https://github.com/orgs/datumforge/security/overview?alertTrendsChart%5BisOpenSelected%5D=true&query=archived%3Afalse&startDate=2023-11-30&endDate=2023-12-30)
+- SBOM Creation / Signing
+- Artifact Provenance (SLSA3) generation + Verification
+- Secret Scanning, remediation, reporting
+- Change management controls
+- Built-in / integrated middleware:
+    - Ratelimiting
+    - Mime
+    - XSS / Clicjacking protection
+    - Cache Control
+    - CORS
+    - Session management
+- pgp-key.txt
+- security.txt
+
+## Data plane
+
+- Turso performance testing / evaluation
+- Database migration creation + linting + visualizations
+- Schema versioning and migration versioning
+- Transaction integrity and rollbacks
+- Cascading soft deletes on related objects
+- Expandable interface management (today built / tested towards SQLite but is planned to support additional backends)
+
+## Systems / Company
+
+- Creating of [Contributor Code of Conduct](https://github.com/datumforge/datum?tab=coc-ov-file#readme)
+- Creation of [Contributing Guide](https://github.com/datumforge/.github/blob/main/CONTRIBUTING.md)
+- Creation of [Security](https://github.com/datumforge/.github/blob/main/SECURITY.md)
+- This bad ass wiki
+- Domains, branding updates in repsective systems, etc.

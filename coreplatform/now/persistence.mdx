@@ -5,4 +5,51 @@ description: ''
 icon: ''
 ---
 
-A stub / placeholder discussing how Datum services will persist information
+# Schema Creation / Management
+
+## Atlas
+
+## Graph Traversal
+
+## Turso Benchmarking
+
+Setup
+1. Used the following [Python SDK](https://docs.turso.tech/libsql/client-access/python-sdk)
+2. [Code](https://github.com/amenowanna/turso-benchmark/blob/main/src/main.py) used for testing
+3. Simple Python load and read tests from the different servers using the libsql_client package. Note, I was not able to get websockets to work at first and spent a lot of time trying to figure out if this was an issue with my setups but it turned out to be that some of it was just bad error handling and reporting. This was actually pretty frustrating to see that even though a trace stack is returned with the errors the error handling is not very robust or detailed so it is not easy to know what went wrong. For Example if a table creation call was not idempotent I would get an error message like this: raise LibsqlError("WebSocket was closed", "HRANA_WEBSOCKET_ERROR")  or a 500 Internal error.  After I was able to resolve this and was doing some basic testing websockets still failed relatively frequently so I just stopped using them and switched to HTTPS and with less errors. There is no error handling or retries in the code used for testing.
+
+4. Primary and replicate DB’s setup in Chicago and Mumbai
+5. Servers setup in Dallas and Mumbai on Equinix Metal
+6. Simple load tests for validating claims of read replicas being used when geographically closer to the client
+      1. Dallas
+        1. Elapsed time to insert 10 rows: 0.335454 seconds
+        2. Elapsed time to select 5274 rows: 0.204171 seconds
+      2. Mumbai
+        1. Elapsed time to insert 10 rows: 2.936097 seconds
+        2. Elapsed time to select 5284 rows: 0.183483 seconds
+
+    Removed the replica
+      1. Dallas
+         1. Elapsed time to insert 10 rows: 0.413106 seconds
+         2. Elapsed time to select 5294 rows: 0.174636 seconds
+      2. Mumbai
+         1. Elapsed time to insert 10 rows: 3.280430 seconds
+         2. Elapsed time to select 5304 rows: 1.433117 seconds
+
+    Analysis
+      1. INSERTS: Since the inserts have to be committed and the data has to be shipped to the primary node as you can see from the results the difference when the replica was present in Mumbai did not affect the time it took to insert the records,
+      2. SELECTS: As we can see with these simple tests the read replicas work as expected per the Turso documentation. When the mumbai replica was available the records were able to be selected from the mumbai server with a similar latency as we saw between the primary replica in Chicago and the Dallas server. Also matches the results shared here
+
+9. Started testing scale and my first setup was just to do simple insert tests as per the documentation this is the main bottleneck as writes are serializable. The results are not very promising if the write volume will be high. I switched back to using libsql instead of HTTPS for the connection protocol. I was not able to address concurrency easily when running against sqlite locally so these tests were all run with just a single process.
+    1. Running from local (Kansas City) to Turso DB (Chicago) using libsql driver on Turso with no replica. All tables were cleared before running these tests.
+         1. Elapsed time to insert 1000 rows: 7.733824 seconds
+         2. Elapsed time to select 1 rows: 0.086606 seconds
+    2. Using libsql driver on local sqlite with WAL enabled
+         1. Elapsed time to insert 1000 rows: 0.068814 seconds
+         2. Elapsed time to select 1 rows: 0.000463 seconds
+    3. Using sqlite driver on local sqlite with WAL enabled
+         1. Elapsed time to insert 1000 rows: 0.068814 seconds
+         2. Elapsed time to select 1 rows: 0.000022 seconds
+
+
+Next step will be to reach out to Turso support to get their feedback on my test setup and how I could maybe improve performance.

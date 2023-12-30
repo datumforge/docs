@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Datum",
-  "favicon": "/favicon.png",
+  "favicon": "/logo/favicon.png",
   "logo": {
     "light": "/logo/logo-light.png",
     "dark": "/logo/logo-dark.png"
@@ -69,16 +69,16 @@
       "url": "netzero"
     },
     {
-      "name": "Enterprise Features",
-      "url": "enterprisefeatures"
-    },
-    {
       "name": "Core Platform",
       "url": "coreplatform"
     },
     {
       "name": "Company Handbook",
       "url": "companyhandbook"
+    },
+    {
+      "name": "Product Docs",
+      "url": "product"
     },
     {
     "name": "API Reference",
@@ -96,7 +96,7 @@
     },
     {
       "group": "Contributing",
-      "pages": ["overview/development", "overview/styleguide"]
+      "pages": ["overview/docs", "overview/code", "overview/styleguide"]
     },
     {
       "group": "Overview",
@@ -108,15 +108,31 @@
     },
     {
       "group": "Overview",
-      "pages": ["netzero/overview/overview","netzero/overview/datacenters"]
+      "pages": ["netzero/overview/overview"]
     },
     {
       "group": "Overview",
-      "pages": ["enterprisefeatures/overview/overview"]
+      "pages": ["coreplatform/overview/overview"]
     },
     {
       "group": "Overview",
-      "pages": ["coreplatform/overview/overview","coreplatform/overview/architecture"]
+      "pages": ["product/overview/overview"]
+    },
+    {
+      "group": "Schemas",
+      "pages": ["product/schemas/overview"]
+    },
+    {
+      "group": "OpenFGA",
+      "pages": ["product/fga/overview"]
+    },
+    {
+      "group": "GraphQL",
+      "pages": ["product/graphql/overview"]
+    },
+    {
+      "group": "Ramblings",
+      "pages": ["product/ramblings/overview"]
     },
     {
       "group": "Now",
@@ -132,11 +148,7 @@
     },
     {
       "group": "Now",
-      "pages": ["enterprisefeatures/now/rbac","enterprisefeatures/now/productassortment","enterprisefeatures/now/slasupport","enterprisefeatures/now/billing","enterprisefeatures/now/groupmanagement","enterprisefeatures/now/integrations","enterprisefeatures/now/analytics"]
-    },
-    {
-      "group": "Now",
-      "pages": ["coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity", "coreplatform/now/persistence", "coreplatform/now/rbac","coreplatform/now/apitoken","coreplatform/now/authentication"]
+      "pages": ["coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity", "coreplatform/now/persistence", "coreplatform/now/rbac","coreplatform/now/apitoken","coreplatform/now/authentication", "coreplatform/now/rbac","coreplatform/now/productassortment","coreplatform/now/slasupport","coreplatform/now/billing","coreplatform/now/groupmanagement","coreplatform/now/integrations","coreplatform/now/analytics"]
     },
     {
       "group": "Next",
@@ -152,11 +164,7 @@
     },
     {
       "group": "Next",
-      "pages": ["enterprisefeatures/next/domains","enterprisefeatures/next/auditlogging","enterprisefeatures/next/communicationchannels","enterprisefeatures/next/esignatures","enterprisefeatures/next/secrets"]
-    },
-    {
-      "group": "Next",
-      "pages": ["coreplatform/next/metricsandmonitoring","coreplatform/next/agent","coreplatform/next/clients","coreplatform/next/releasenotes","coreplatform/next/systemstatusreporting","coreplatform/next/vulnerabilitymanagement"]
+      "pages": ["coreplatform/next/metricsandmonitoring","coreplatform/next/agent","coreplatform/next/clients","coreplatform/next/releasenotes","coreplatform/next/systemstatusreporting","coreplatform/next/vulnerabilitymanagement","coreplatform/next/domains","coreplatform/next/auditlogging","coreplatform/next/communicationchannels","coreplatform/next/esignatures","coreplatform/next/secrets"]
     },
     {
       "group": "After",
@@ -172,11 +180,7 @@
     },
     {
       "group": "After",
-      "pages": ["enterprisefeatures/after/contractmanagement","enterprisefeatures/after/datalocality","enterprisefeatures/after/gdprdataprivacy","enterprisefeatures/after/soc2isocompliance","enterprisefeatures/after/webhooks"]
-    },
-    {
-      "group": "After",
-      "pages": ["coreplatform/after/datalocality","coreplatform/after/complianceplatform","coreplatform/after/dedicatedtenant","coreplatform/after/securityplatform"]
+      "pages": ["coreplatform/after/datalocality","coreplatform/after/complianceplatform","coreplatform/after/dedicatedtenant","coreplatform/after/securityplatform","coreplatform/after/contractmanagement","coreplatform/after/datalocality","coreplatform/after/gdprdataprivacy","coreplatform/after/soc2isocompliance","coreplatform/after/webhooks"]
     },
     {
       "group": "Some day",
@@ -192,11 +196,7 @@
     },
     {
       "group": "Some day",
-      "pages": ["enterprisefeatures/someday/syntheticmonitoring"]
-    },
-    {
-      "group": "Some day",
-      "pages": ["coreplatform/someday/skynet"]
+      "pages": ["coreplatform/someday/skynet", "coreplatform/someday/syntheticmonitoring"]
     },
     {
       "group": "Company Handbook",

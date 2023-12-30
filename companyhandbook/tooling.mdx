@@ -1,8 +1,8 @@
 ---
-title: ''
-sidebarTitle: ''
-description: ''
-icon: ''
+title: 'Tooling'
+sidebarTitle: 'Tooling'
+description: 'What tooling we currently use / plan to use'
+icon: 'wrench'
 ---
 <Note>
     This page is currently a work in progress; the intent is to enumerate the tooling we've chosen to use and why we chose to use it, as well as include relevant documentation or references
@@ -11,20 +11,18 @@ icon: ''
 ## How we build
 
 - Buildkite (agent deployed to GKE cluster)
-- Github
+- Github / github actions
 - GCP artifact registry
+- Atlas (db management)
 
 ## How we run
 
+- Cloudflare
 - Posthog
 - GCP for runtime (GKE / Kubernetes)
 
 ## Integrations
 
-### Embedded documentation
-
-https://github.com/AppFlowy-IO/AppFlowy
-
-### Messaging / Notifications
-
-https://github.com/novuhq/novu
+- SonarCloud
+- Trivy
+- Github advanced security / gosec
