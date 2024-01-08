@@ -1,0 +1,60 @@
+---
+title: "Authorization"
+description: "Authorization in the Datum API"
+---
+
+Authoriazation is handled by a combination of [Ent Policies](https://entgo.io/docs/privacy/) and [OpenFGA](https://openfga.dev/) relationhip-based access control (ReBAC)
+
+# Ent Policies
+
+Ent policies will allow or deny the access to a user based on: 
+1. Viewer Context (added to an authenticated user after logging in storing their user id and org id)
+2. Poilicies that check the user's relationship tupes in FGA
+
+# OpenFGA Relationships
+
+On object creation, a relationship tuple will be created in FGA, representing the user to object relationship using [Ent Hooks](https://entgo.io/docs/hooks/). 
+
+## Example 
+
+```go
+// HookOrganizationAuthz runs on organization mutations to setup or remove relationship tuples
+func HookOrganizationAuthz() ent.Hook {
+	return func(next ent.Mutator) ent.Mutator {
+		return hook.OrganizationFunc(func(ctx context.Context, m *generated.OrganizationMutation) (ent.Value, error) {
+			// do the mutation, and then create/delete the relationship
+			retValue, err := next.Mutate(ctx, m)
+			if err != nil {
+				// if we error, do not attempt to create the relationships
+				return retValue, err
+			}
+
+			if m.Op().Is(ent.OpCreate) {
+				// create the relationship tuple for the owner
+				err = organizationCreateHook(ctx, m)
+			} else if m.Op().Is(ent.OpDelete|ent.OpDeleteOne) || mixin.CheckIsSoftDelete(ctx) {
+				// delete all relationship tuples on delete, or soft delete (Update Op)
+				err = organizationDeleteHook(ctx, m)
+			}
+
+			return retValue, err
+		})
+	}
+}
+```
+
+On `Create` relationship tuples will be created based on the role of the user, so if a user is being added to an org as an `Owner` a `tuple` will be created that looks like: 
+
+```
+USER user:01HK343PC9MFW89V0DBZ8CR8YM
+RELATION  owner
+OBJECT  organization:01HK343PDMYQHKHWKA55RY7QT2
+```
+
+The `owner` relation gives the user access based on the `FGA` model, for example, on an organization, the owner will have `view`, `edit` and `delete` access
+
+```
+    define can_delete: owner
+    define can_edit: admin or owner
+    define can_view: member or admin or owner
+```

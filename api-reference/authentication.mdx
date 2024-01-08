@@ -1,22 +1,44 @@
 ---
 title: "Authentication"
-description: "Example overview page before API endpoints"
+description: "Authentication with the Datum API"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et eros iaculis tortor dapibus cursus. Curabitur quis sapien nec tortor dictum gravida.
+You can authenticate requests with the Datum API using basic auth (with a username and password), token-based, and session cookies. Future releases will include auth methods such as Oauth2.0 and Passkeys.
 
-```bash
-'Authorization': 'Token <team_token>'
+## Authentication Methods
+
+### Username/Password
+
+Send a valid username and password to the `/login` endpoint. Upon a successful login, the access token and refresh token will be returned in the response cookies. 
+
+Payload: 
+
+```json
+{
+    "username": "example@datum.net",
+    "password": "super#safe$123!"
+}
 ```
 
-## API Tokens
+Sample Request:
 
-Nullam convallis mauris at nunc consectetur, ac imperdiet leo rutrum. Maecenas cursus purus a pellentesque blandit. Pellentesque vitae lacinia libero, non mollis metus.
 
-Nam id ullamcorper urna, at rutrum enim. [Maecenas vulputate](/introduction) vehicula libero, vitae sodales augue pretium nec. Quisque a magna tempor, semper risus vel, fermentum nunc. Pellentesque fermentum interdum ex, eu convallis massa blandit sed. Aliquam bibendum ipsum vel laoreet auctor.
+```bash
+curl  -v https://datum.net/login -d '{"username":"example@datum.net", "password":"super#safe$123!"}'
+```
 
-### Permissions
+### Token-based 
 
-Etiam lobortis ut odio ut fermentum. Nunc odio velit, sollicitudin at consectetur id, tristique eget turpis. Aliquam at risus vitae dolor sodales venenatis. In hac habitasse platea dictumst.
+With a valid `JWT`, the access token can be sent in the `Authorization` header.
 
-Aenean consequat diam eget mollis fermentum. [Quisque eu malesuada](/introduction) felis, non dignissim libero.
+```bash
+-H "Authorization: Bearer $DATUM_ACCESS_TOKEN"
+```
+
+### Passkeys (coming soon)
+
+### Oauth 2.0 / Social Login (coming soon)
+
+## Permissions
+
+## Best Practices
