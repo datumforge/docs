@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Datum",
-  "favicon": "/favicon.png",
+  "favicon": "/logo/favicon.png",
   "logo": {
     "light": "/logo/logo-light.png",
     "dark": "/logo/logo-dark.png"
@@ -69,16 +69,16 @@
       "url": "netzero"
     },
     {
-      "name": "Enterprise Features",
-      "url": "enterprisefeatures"
-    },
-    {
       "name": "Core Platform",
       "url": "coreplatform"
     },
     {
       "name": "Company Handbook",
       "url": "companyhandbook"
+    },
+    {
+      "name": "Product Docs",
+      "url": "product"
     },
     {
     "name": "API Reference",
@@ -96,7 +96,7 @@
     },
     {
       "group": "Contributing",
-      "pages": ["overview/development", "overview/styleguide"]
+      "pages": ["overview/docs", "overview/code", "overview/styleguide"]
     },
     {
       "group": "Overview",
@@ -108,15 +108,31 @@
     },
     {
       "group": "Overview",
-      "pages": ["netzero/overview/overview","netzero/overview/datacenters"]
+      "pages": ["netzero/overview/overview"]
     },
     {
       "group": "Overview",
-      "pages": ["enterprisefeatures/overview/overview"]
+      "pages": ["coreplatform/overview/overview"]
     },
     {
       "group": "Overview",
-      "pages": ["coreplatform/overview/overview","coreplatform/overview/architecture"]
+      "pages": ["product/overview/overview"]
+    },
+    {
+      "group": "Schemas",
+      "pages": ["product/schemas/overview"]
+    },
+    {
+      "group": "OpenFGA",
+      "pages": ["product/fga/overview"]
+    },
+    {
+      "group": "GraphQL",
+      "pages": ["product/graphql/overview"]
+    },
+    {
+      "group": "Ramblings",
+      "pages": ["product/ramblings/overview"]
     },
     {
       "group": "Now",
@@ -132,11 +148,7 @@
     },
     {
       "group": "Now",
-      "pages": ["enterprisefeatures/now/rbac","enterprisefeatures/now/productassortment","enterprisefeatures/now/slasupport","enterprisefeatures/now/billing","enterprisefeatures/now/groupmanagement","enterprisefeatures/now/integrations","enterprisefeatures/now/analytics"]
-    },
-    {
-      "group": "Now",
-      "pages": ["coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity", "coreplatform/now/persistence", "coreplatform/now/rbac","coreplatform/now/apitoken","coreplatform/now/authentication"]
+      "pages": ["coreplatform/now/tenants","coreplatform/now/locations","coreplatform/now/users","coreplatform/now/identity", "coreplatform/now/persistence", "coreplatform/now/rbac","coreplatform/now/apitoken","coreplatform/now/authentication", "coreplatform/now/rbac","coreplatform/now/productassortment","coreplatform/now/slasupport","coreplatform/now/billing","coreplatform/now/groupmanagement","coreplatform/now/integrations","coreplatform/now/analytics"]
     },
     {
       "group": "Next",
@@ -152,11 +164,7 @@
     },
     {
       "group": "Next",
-      "pages": ["enterprisefeatures/next/domains","enterprisefeatures/next/auditlogging","enterprisefeatures/next/communicationchannels","enterprisefeatures/next/esignatures","enterprisefeatures/next/secrets"]
-    },
-    {
-      "group": "Next",
-      "pages": ["coreplatform/next/metricsandmonitoring","coreplatform/next/agent","coreplatform/next/clients","coreplatform/next/releasenotes","coreplatform/next/systemstatusreporting","coreplatform/next/vulnerabilitymanagement"]
+      "pages": ["coreplatform/next/metricsandmonitoring","coreplatform/next/agent","coreplatform/next/clients","coreplatform/next/releasenotes","coreplatform/next/systemstatusreporting","coreplatform/next/vulnerabilitymanagement","coreplatform/next/domains","coreplatform/next/auditlogging","coreplatform/next/communicationchannels","coreplatform/next/esignatures","coreplatform/next/secrets"]
     },
     {
       "group": "After",
@@ -172,11 +180,7 @@
     },
     {
       "group": "After",
-      "pages": ["enterprisefeatures/after/contractmanagement","enterprisefeatures/after/datalocality","enterprisefeatures/after/gdprdataprivacy","enterprisefeatures/after/soc2isocompliance","enterprisefeatures/after/webhooks"]
-    },
-    {
-      "group": "After",
-      "pages": ["coreplatform/after/datalocality","coreplatform/after/complianceplatform","coreplatform/after/dedicatedtenant","coreplatform/after/securityplatform"]
+      "pages": ["coreplatform/after/datalocality","coreplatform/after/complianceplatform","coreplatform/after/dedicatedtenant","coreplatform/after/securityplatform","coreplatform/after/contractmanagement","coreplatform/after/datalocality","coreplatform/after/gdprdataprivacy","coreplatform/after/soc2isocompliance","coreplatform/after/webhooks"]
     },
     {
       "group": "Some day",
@@ -192,29 +196,25 @@
     },
     {
       "group": "Some day",
-      "pages": ["enterprisefeatures/someday/syntheticmonitoring"]
-    },
-    {
-      "group": "Some day",
-      "pages": ["coreplatform/someday/skynet"]
+      "pages": ["coreplatform/someday/skynet", "coreplatform/someday/syntheticmonitoring"]
     },
     {
       "group": "Company Handbook",
-      "pages": ["companyhandbook/whatwebelieve","companyhandbook/values","companyhandbook/strategy","companyhandbook/marketingstrategy","companyhandbook/businessopportunity","companyhandbook/culturebranding", "companyhandbook/tooling"]
+      "pages": ["companyhandbook/whatwebelieve","companyhandbook/values","companyhandbook/strategy","companyhandbook/marketingstrategy","companyhandbook/businessopportunity","companyhandbook/culturebranding", "companyhandbook/tooling", "companyhandbook/progress", "companyhandbook/technologyroadmap"]
     },
     {
       "group": "Development Standards",
       "pages": ["companyhandbook/oss/developmentstandards"]
     },
       {
-        "group": "AccessToken",
+        "group": "EmailVerificationToken",
         "pages": [
-          "api-reference/accesstoken/list-accesstokens",
-          "api-reference/accesstoken/create-a-new-accesstoken",
-          "api-reference/accesstoken/find-a-accesstoken-by-id",
-          "api-reference/accesstoken/deletes-a-accesstoken-by-id",
-          "api-reference/accesstoken/updates-a-accesstoken",
-          "api-reference/accesstoken/find-the-attached-user"
+          "api-reference/emailverificationtoken/list-emailverificationtokens",
+          "api-reference/emailverificationtoken/create-a-new-emailverificationtoken",
+          "api-reference/emailverificationtoken/find-a-emailverificationtoken-by-id",
+          "api-reference/emailverificationtoken/deletes-a-emailverificationtoken-by-id",
+          "api-reference/emailverificationtoken/updates-a-emailverificationtoken",
+          "api-reference/emailverificationtoken/find-the-attached-user"
         ]
       },
       {
@@ -226,6 +226,18 @@
           "api-reference/entitlement/deletes-a-entitlement-by-id",
           "api-reference/entitlement/updates-a-entitlement",
           "api-reference/entitlement/find-the-attached-organization"
+        ]
+      },
+      {
+        "group": "GroupMembership",
+        "pages": [
+          "api-reference/groupmembership/list-groupmemberships",
+          "api-reference/groupmembership/create-a-new-groupmembership",
+          "api-reference/groupmembership/find-a-groupmembership-by-id",
+          "api-reference/groupmembership/deletes-a-groupmembership-by-id",
+          "api-reference/groupmembership/updates-a-groupmembership",
+          "api-reference/groupmembership/find-the-attached-group",
+          "api-reference/groupmembership/find-the-attached-user"
         ]
       },
       {
@@ -247,6 +259,7 @@
           "api-reference/group/find-a-group-by-id",
           "api-reference/group/deletes-a-group-by-id",
           "api-reference/group/updates-a-group",
+          "api-reference/group/list-attached-groupmemberships",
           "api-reference/group/find-the-attached-organization",
           "api-reference/group/find-the-attached-groupsetting",
           "api-reference/group/list-attached-users"
@@ -285,6 +298,18 @@
         ]
       },
       {
+        "group": "OrgMembership",
+        "pages": [
+          "api-reference/orgmembership/list-orgmemberships",
+          "api-reference/orgmembership/create-a-new-orgmembership",
+          "api-reference/orgmembership/find-a-orgmembership-by-id",
+          "api-reference/orgmembership/deletes-a-orgmembership-by-id",
+          "api-reference/orgmembership/updates-a-orgmembership",
+          "api-reference/orgmembership/find-the-attached-organization",
+          "api-reference/orgmembership/find-the-attached-user"
+        ]
+      },
+      {
         "group": "OrganizationSetting",
         "pages": [
           "api-reference/organizationsetting/list-organizationsettings",
@@ -308,9 +333,21 @@
           "api-reference/organization/list-attached-groups",
           "api-reference/organization/list-attached-integrations",
           "api-reference/organization/list-attached-oauthproviders",
+          "api-reference/organization/list-attached-orgmemberships",
           "api-reference/organization/find-the-attached-organization",
           "api-reference/organization/find-the-attached-organizationsetting",
           "api-reference/organization/list-attached-users"
+        ]
+      },
+      {
+        "group": "PasswordResetToken",
+        "pages": [
+          "api-reference/passwordresettoken/list-passwordresettokens",
+          "api-reference/passwordresettoken/create-a-new-passwordresettoken",
+          "api-reference/passwordresettoken/find-a-passwordresettoken-by-id",
+          "api-reference/passwordresettoken/deletes-a-passwordresettoken-by-id",
+          "api-reference/passwordresettoken/updates-a-passwordresettoken",
+          "api-reference/passwordresettoken/find-the-attached-user"
         ]
       },
       {
@@ -322,16 +359,6 @@
           "api-reference/personalaccesstoken/deletes-a-personalaccesstoken-by-id",
           "api-reference/personalaccesstoken/updates-a-personalaccesstoken",
           "api-reference/personalaccesstoken/find-the-attached-user"
-        ]
-      },
-      {
-        "group": "RefreshToken",
-        "pages": [
-          "api-reference/refreshtoken/list-refreshtokens",
-          "api-reference/refreshtoken/create-a-new-refreshtoken",
-          "api-reference/refreshtoken/find-a-refreshtoken-by-id",
-          "api-reference/refreshtoken/deletes-a-refreshtoken-by-id",
-          "api-reference/refreshtoken/updates-a-refreshtoken"
         ]
       },
       {
@@ -364,16 +391,18 @@
           "api-reference/user/find-a-user-by-id",
           "api-reference/user/deletes-a-user-by-id",
           "api-reference/user/updates-a-user",
-          "api-reference/user/list-attached-accesstokens",
+          "api-reference/user/list-attached-emailverificationtokens",
+          "api-reference/user/list-attached-groupmemberships",
           "api-reference/user/list-attached-groups",
+          "api-reference/user/list-attached-orgmemberships",
           "api-reference/user/list-attached-organizations",
+          "api-reference/user/list-attached-passwordresettokens",
           "api-reference/user/list-attached-personalaccesstokens",
-          "api-reference/user/list-attached-refreshtokens",
           "api-reference/user/list-attached-sessions",
           "api-reference/user/find-the-attached-usersetting"
         ]
       }
-  ],
+    ],
   "footerSocials": {
     "github": "https://github.com/datumforge"
   }
