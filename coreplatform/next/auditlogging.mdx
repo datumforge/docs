@@ -3,3 +3,78 @@ title: 'Audit Logging'
 sidebarTitle: 'Audit Logging'
 description: ''
 ---
+
+## Overview
+
+Audit logs are the centralized stream of all user activity within a team. Part of the security and compliance program of any large enterprise is designed to control and monitor the access of information within the organization. This drives the need for enterprise buyers to ask for a detailed audit trail of all activity that happens within their account. An audit trail can be used to prevent suspicious activity when it starts (if actively monitored), or to play back account activity during an incident review.
+
+## Objective
+
+The most basic audit logging functionality requires a clear understanding of which events should be recorded in the audit log. The ISO-27002 specifications provide some clarity about what enterprise customers will likely need to have logged. However, every application can be a bit different in terms of what activities should actually be logged for auditing.
+
+Generally, the specific content of a target is not audit logged, rather the state or context is logged. Examples of events that should be audit logged are as follows: application specific user activities, exceptions, information security events (successful and rejected events), use of privileges, log-on failed-attempts & successes, log-off, data accessed, data attempted to be accessed, administrative configuration changes and the use of advanced privileges.
+
+The best way to organize events is as the combination of targets receiving actions (i.e. user.created, user.deleted, document.viewed, account.setting.updated). Actions can generally be categorized into their CRUD type (i.e. Create, Read, Update, or Delete). Events are generally performed by an actor (i.e. a bob@somebigbank.com updated their password) however, there are anonymous actions (such as failed log in attempts).
+
+Note: When the logging of these events is implemented in code, the audit logging method should be called at the bottom of the function to ensure that the event was fully executed.
+
+## Assumptions
+
+When an event is logged it should have details that provide enough information about the event to provide the necessary context of who, what, when and where etc. Specifically, the following fields are critical to an audit log:
+
+- Actor - The username, uuid, API token name of the account taking the action.
+- Group - The group (aka organization, team, account) that the actor is a member of (needed to show admins the full history of their group).
+- Where - IP address, device ID, country
+- When - The NTP synced server time when the event happened.
+- Target - the object or underlying resource that is being changed (the noun) as well as the fields that include a key value for the new state of the target.
+- Action - the way in which the object was changed (the verb)
+- Action Type - the corresponding CRUD category.
+- Event Name - Common name for the event that can be used to filter down to similar events.
+- Description - A human readable description of the action taken, sometimes includes links to other pages within the application.
+
+Optional information:
+
+- Server ids or names, server location.
+- Version of the code that is sending the events.
+- Protocols ie http vs https.
+- Global Actor ID if a customer is using Single Sign On, it might be important to also include a Global UID if it differs from the application specific ID.
+
+## Requirements
+
+### Immutability
+
+Data in an audit log should never change. Deleted objects should maintain a separately logged record of actions associated with the object (including its creation and deletion). External facing APIs should only be able to read the audit log, not write to it.
+
+### Time Synced
+
+Individual application audit logs will likely be combined with other audit log data, this makes it important to ensure that the timestamp on each event is accurate. The standard is to use the server time from a regularly NTP synced server, generally stored in GMT down to the millisecond.
+
+### API & exportable
+
+The activity should be exportable to a CSV format and API accessible so that it can be centralized into an organization wide SIEM logging system like Splunk. It’s advisable to offer both the ability to poll for new events and to be able to push new events to the remote system. When polling, use standards such as etag headers to prevent duplicate events from being received. When pushing, use standards such as webhooks to minimize the amount of custom work required to ingest these events.
+
+### Account admin viewable
+
+An audit log viewer should be embedded into the application to make the audit log accessible to enterprise account admins at all times. This viewer should be the central place to access all account activity logs.
+
+### Searchable & filterable
+
+Events should be indexed for searchability and filtering. Generally, actors, event names, IPs are all linked to filter down to related activity. The viewer should allow the account admin to specify a date range to filter in conjunction with other filters and searches.
+
+### Change log
+
+When new events and actions are captured in the audit log, it is important to publish the date at which each became available to appear in the audit log.
+
+### Customizable retention time
+
+By default an audit log should generally be kept for 1-3 years. The specific default timeframe should be documented but also made configurable (generally shorter) for customers who have data retention requirements.
+
+### Documented lag time
+
+If there are significant lags between collection and reporting availability, those times should be made known to the account admin viewing the logs.
+
+## Design
+
+## Metrics
+
+## Scope

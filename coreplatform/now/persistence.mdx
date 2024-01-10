@@ -13,10 +13,11 @@ icon: ''
 
 ## Turso Benchmarking
 
-Setup
+Setup:
+
 1. Used the following [Python SDK](https://docs.turso.tech/libsql/client-access/python-sdk)
 2. [Code](https://github.com/amenowanna/turso-benchmark/blob/main/src/main.py) used for testing
-3. Simple Python load and read tests from the different servers using the libsql_client package. Note, I was not able to get websockets to work at first and spent a lot of time trying to figure out if this was an issue with my setups but it turned out to be that some of it was just bad error handling and reporting. This was actually pretty frustrating to see that even though a trace stack is returned with the errors the error handling is not very robust or detailed so it is not easy to know what went wrong. For Example if a table creation call was not idempotent I would get an error message like this: raise LibsqlError("WebSocket was closed", "HRANA_WEBSOCKET_ERROR")  or a 500 Internal error.  After I was able to resolve this and was doing some basic testing websockets still failed relatively frequently so I just stopped using them and switched to HTTPS and with less errors. There is no error handling or retries in the code used for testing.
+3. Simple Python load and read tests from the different servers using the libsql_client package.
 
 4. Primary and replicate DB’s setup in Chicago and Mumbai
 5. Servers setup in Dallas and Mumbai on Equinix Metal
@@ -41,7 +42,7 @@ Setup
       2. SELECTS: As we can see with these simple tests the read replicas work as expected per the Turso documentation. When the mumbai replica was available the records were able to be selected from the mumbai server with a similar latency as we saw between the primary replica in Chicago and the Dallas server. Also matches the results shared here
 
 9. Started testing scale and my first setup was just to do simple insert tests as per the documentation this is the main bottleneck as writes are serializable. The results are not very promising if the write volume will be high. I switched back to using libsql instead of HTTPS for the connection protocol. I was not able to address concurrency easily when running against sqlite locally so these tests were all run with just a single process.
-    1. Running from local (Kansas City) to Turso DB (Chicago) using libsql driver on Turso with no replica. All tables were cleared before running these tests.
+    1. Running from local to Turso DB (Chicago) using libsql driver on Turso with no replica. All tables were cleared before running these tests.
          1. Elapsed time to insert 1000 rows: 7.733824 seconds
          2. Elapsed time to select 1 rows: 0.086606 seconds
     2. Using libsql driver on local sqlite with WAL enabled

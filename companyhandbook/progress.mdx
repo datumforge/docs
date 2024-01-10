@@ -27,14 +27,14 @@ Implementing these types of features "after the fact" as many startups are faced
 ## Build / Release Ecosystem
 
 - Setup of Datum's buildkite organization, fully [public](https://buildkite.com/datum)
-- Setup of runners / VM's / agents
+- Setup of runners / VM's / agents (plus corresponding setup automation)
 - Setup / configuration / public notifications around [detected vulnerabilities](https://buildkite.com/datum/datum/builds/1231)
 - Code / test coverage reporting
 - Vulnerability scanning and reporting
-- Overall decent unit test code coverage
+- Overall ~decent (30%) unit test code coverage
 - Authorization / permissions testing
 - Artifact signing, publishing
-- OpenAPI spec generation
+- OpenAPI spec generation and import into docs
 - Release changelogs
 
 ## API's
@@ -50,7 +50,7 @@ Implementing these types of features "after the fact" as many startups are faced
 ## Authorizations and Policies
 
 - Initial entitlement-based permissions moodel
-- Privacy hook / interceptor implementation + integration with FGA
+- Privacy hook / interceptor implementation + integration with openFGA
 - Relationship tuple creation, testing, validation for several objects
 - Base policy creation
 
