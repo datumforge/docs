@@ -3,16 +3,7 @@ title: 'Current Progress'
 sidebarTitle: 'Current Progress'
 description: 'Current Development Progress'
 ---
-
-# Progress
-
-A high-level summary of progress to-date is below, as well as sub-section details for those interested. Many of the below statements are relatively technical, so for the non- technical: as of Jan 2024 the current state of the product is mostly what we can refer to as a "template" or "scaffold", which is to say that it's the bones of a system and not a system itself. When thinking about how to approach development of our system(s) and what the most re-usable to other(s) the pieces of that work would be (especially as it relates to Datums values), instead of jumping right into something "digital infrastructure" specific, or "sustainability" specific, building some of the foundational aspsects of what one would need to start a new B2B SaaS compahy (or any company, really) looks like appealing targets.
-
-Emphasis has been placed on foundational components such as Authentication and Authorization constructs, as well as investment into the creation of re-usable libraries over bespoke, brittle, "quick to market" oriented development. Test coverage, build / test / release cadences, day 1 change management controls, etc., are also the most practiced mucle of the founding engineers (Matt Anderson [@matoszz](https://github.com/matoszz) and Sarah Funkhouser @golanglemonade) so this was believed to be the most worthwhile starting point and also is perceived as a future escalator. Given most of the investments to-date have been around things like relationship heirarchy, user sign up / registration / communication flows, are all re-usable for any product we will develop and is created on top of a stable foundation rather than a product users could pay us for in the market but which would need replaced (and likely at a high cost once the platform is already live).
-
-## Summary
-
-Given the general desire to build out an "[Enterprise Ready](https://www.enterprisegrade.io/)" Platform, initial emphasis and development effort have been applied towards foundational constructs around:
+To-date, emphasis and development effort have been applied towards foundational constructs such as:
 
 - Authentication
 - Authorization
@@ -22,7 +13,7 @@ Given the general desire to build out an "[Enterprise Ready](https://www.enterpr
 - Policy constructs
 - Hardened defaults
 
-Implementing these types of features "after the fact" as many startups are faced with is not only far more difficult to do but is often done partially and/or incorrectly in an attempt to not disrupt customers rather than investing the time up front to create scalable systems and libraries within the codebase(s). 
+Each section below deteails the specifics of what's been accomplished thus far.
 
 ## Build / Release Ecosystem
 
@@ -39,6 +30,7 @@ Implementing these types of features "after the fact" as many startups are faced
 
 ## API's
 
+- Check out all the available open API specs for [details](https://docs.datum.net/api-reference/user/list-users)!
 - Personal org and regular Organization creation with recursive parent / child relationships
 - Group creation, membership constructs in-flight
 - Organization CRUD
@@ -46,6 +38,7 @@ Implementing these types of features "after the fact" as many startups are faced
 - User CRUD
 - Personal access token CRUD
 
+Other various API's for registration, email verification, etc.
 
 ## Authorizations and Policies
 
