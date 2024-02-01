@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  install:
+    desc: installs tools and packages needed to develop against this repo
+    cmds:
+      - npm i -g mintlify
+      - brew install nvm
+  run:
+    desc: run a local server which launches the rendered wiki on localhost:3000
+    cmds:
+      - mintlify dev
+  apidocs:
+    desc: runs the command required to generate the api documentation
+    cmds:
+      - npx @mintlify/scraping@latest openapi-file openapi.json -o api-reference
