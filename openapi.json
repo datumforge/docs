@@ -471,11 +471,11 @@
                   "tier": {
                     "type": "string",
                     "enum": [
-                      "free",
-                      "pro",
-                      "enterprise"
+                      "FREE",
+                      "PRO",
+                      "ENTERPRISE"
                     ],
-                    "default": "free"
+                    "default": "FREE"
                   },
                   "external_customer_id": {
                     "type": "string"
@@ -659,11 +659,11 @@
                   "tier": {
                     "type": "string",
                     "enum": [
-                      "free",
-                      "pro",
-                      "enterprise"
+                      "FREE",
+                      "PRO",
+                      "ENTERPRISE"
                     ],
-                    "default": "free"
+                    "default": "FREE"
                   },
                   "external_customer_id": {
                     "type": "string"
@@ -846,10 +846,16 @@
                   "updated_by": {
                     "type": "string"
                   },
+                  "deleted_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deleted_by": {
+                    "type": "string"
+                  },
                   "role": {
                     "type": "string",
                     "enum": [
-                      "OWNER",
                       "ADMIN",
                       "MEMBER"
                     ],
@@ -1017,20 +1023,20 @@
                   "updated_by": {
                     "type": "string"
                   },
+                  "deleted_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deleted_by": {
+                    "type": "string"
+                  },
                   "role": {
                     "type": "string",
                     "enum": [
-                      "OWNER",
                       "ADMIN",
                       "MEMBER"
                     ],
                     "default": "MEMBER"
-                  },
-                  "group_id": {
-                    "type": "string"
-                  },
-                  "user_id": {
-                    "type": "string"
                   },
                   "group": {
                     "type": "string"
@@ -1674,7 +1680,7 @@
                       "type": "string"
                     }
                   },
-                  "group_memberships": {
+                  "members": {
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -1867,7 +1873,7 @@
                       "type": "string"
                     }
                   },
-                  "group_memberships": {
+                  "members": {
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -1905,14 +1911,14 @@
         }
       }
     },
-    "/groups/{id}/group-memberships": {
+    "/groups/{id}/members": {
       "get": {
         "tags": [
           "Group"
         ],
-        "summary": "List attached GroupMemberships",
-        "description": "List attached GroupMemberships.",
-        "operationId": "listGroupGroupMemberships",
+        "summary": "List attached Members",
+        "description": "List attached Members.",
+        "operationId": "listGroupMembers",
         "parameters": [
           {
             "name": "id",
@@ -1948,7 +1954,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Group_GroupMembershipsList"
+                    "$ref": "#/components/schemas/Group_MembersList"
                   }
                 }
               }
@@ -2454,6 +2460,424 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Integration_OwnerRead"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/invites": {
+      "get": {
+        "tags": [
+          "Invite"
+        ],
+        "summary": "List Invites",
+        "description": "List Invites.",
+        "operationId": "listInvite",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "maximum": 255,
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Invite list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InviteList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Invite"
+        ],
+        "summary": "Create a new Invite",
+        "description": "Creates a new Invite and persists it to storage.",
+        "operationId": "createInvite",
+        "requestBody": {
+          "description": "Invite to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  },
+                  "deleted_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deleted_by": {
+                    "type": "string"
+                  },
+                  "owner_id": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "expires": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "recipient": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "INVITATION_SENT",
+                      "APPROVAL_REQUIRED",
+                      "INVITATION_ACCEPTED",
+                      "INVITATION_EXPIRED"
+                    ],
+                    "default": "INVITATION_SENT"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "ADMIN",
+                      "MEMBER",
+                      "OWNER"
+                    ],
+                    "default": "MEMBER"
+                  },
+                  "send_attempts": {
+                    "type": "integer"
+                  },
+                  "requestor_id": {
+                    "type": "string"
+                  },
+                  "secret": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "owner": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "created_at",
+                  "updated_at",
+                  "owner_id",
+                  "token",
+                  "expires",
+                  "recipient",
+                  "status",
+                  "role",
+                  "send_attempts",
+                  "requestor_id",
+                  "secret",
+                  "owner"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Invite created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteCreate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/invites/{id}": {
+      "get": {
+        "tags": [
+          "Invite"
+        ],
+        "summary": "Find a Invite by ID",
+        "description": "Finds the Invite with the requested ID and returns it.",
+        "operationId": "readInvite",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Invite",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invite with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteRead"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Invite"
+        ],
+        "summary": "Deletes a Invite by ID",
+        "description": "Deletes the Invite with the requested ID.",
+        "operationId": "deleteInvite",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Invite",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Invite with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Invite"
+        ],
+        "summary": "Updates a Invite",
+        "description": "Updates a Invite and persists changes to storage.",
+        "operationId": "updateInvite",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Invite",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Invite properties to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  },
+                  "deleted_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deleted_by": {
+                    "type": "string"
+                  },
+                  "owner_id": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "expires": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "recipient": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "INVITATION_SENT",
+                      "APPROVAL_REQUIRED",
+                      "INVITATION_ACCEPTED",
+                      "INVITATION_EXPIRED"
+                    ],
+                    "default": "INVITATION_SENT"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "ADMIN",
+                      "MEMBER",
+                      "OWNER"
+                    ],
+                    "default": "MEMBER"
+                  },
+                  "send_attempts": {
+                    "type": "integer"
+                  },
+                  "secret": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "owner": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Invite updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteUpdate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/invites/{id}/owner": {
+      "get": {
+        "tags": [
+          "Invite"
+        ],
+        "summary": "Find the attached Organization",
+        "description": "Find the attached Organization of the Invite with the given ID",
+        "operationId": "readInviteOwner",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Invite",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organization attached to Invite with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invite_OwnerRead"
                 }
               }
             }
@@ -3324,22 +3748,29 @@
                   "updated_by": {
                     "type": "string"
                   },
+                  "deleted_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deleted_by": {
+                    "type": "string"
+                  },
                   "role": {
                     "type": "string",
                     "enum": [
-                      "OWNER",
                       "ADMIN",
-                      "MEMBER"
+                      "MEMBER",
+                      "OWNER"
                     ],
                     "default": "MEMBER"
                   },
-                  "org_id": {
+                  "organization_id": {
                     "type": "string"
                   },
                   "user_id": {
                     "type": "string"
                   },
-                  "org": {
+                  "organization": {
                     "type": "string"
                   },
                   "user": {
@@ -3350,9 +3781,9 @@
                   "created_at",
                   "updated_at",
                   "role",
-                  "org_id",
+                  "organization_id",
                   "user_id",
-                  "org",
+                  "organization",
                   "user"
                 ]
               }
@@ -3495,22 +3926,23 @@
                   "updated_by": {
                     "type": "string"
                   },
+                  "deleted_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deleted_by": {
+                    "type": "string"
+                  },
                   "role": {
                     "type": "string",
                     "enum": [
-                      "OWNER",
                       "ADMIN",
-                      "MEMBER"
+                      "MEMBER",
+                      "OWNER"
                     ],
                     "default": "MEMBER"
                   },
-                  "org_id": {
-                    "type": "string"
-                  },
-                  "user_id": {
-                    "type": "string"
-                  },
-                  "org": {
+                  "organization": {
                     "type": "string"
                   },
                   "user": {
@@ -3548,14 +3980,14 @@
         }
       }
     },
-    "/org-memberships/{id}/org": {
+    "/org-memberships/{id}/organization": {
       "get": {
         "tags": [
           "OrgMembership"
         ],
         "summary": "Find the attached Organization",
         "description": "Find the attached Organization of the OrgMembership with the given ID",
-        "operationId": "readOrgMembershipOrg",
+        "operationId": "readOrgMembershipOrganization",
         "parameters": [
           {
             "name": "id",
@@ -3573,7 +4005,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OrgMembership_OrgRead"
+                  "$ref": "#/components/schemas/OrgMembership_OrganizationRead"
                 }
               }
             }
@@ -4186,7 +4618,13 @@
                       "type": "string"
                     }
                   },
-                  "org_memberships": {
+                  "invites": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "members": {
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -4398,7 +4836,13 @@
                       "type": "string"
                     }
                   },
-                  "org_memberships": {
+                  "invites": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "members": {
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -4692,6 +5136,134 @@
         }
       }
     },
+    "/organizations/{id}/invites": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "List attached Invites",
+        "description": "List attached Invites.",
+        "operationId": "listOrganizationInvites",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Organization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Organizations list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Organization_InvitesList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/organizations/{id}/members": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "List attached Members",
+        "description": "List attached Members.",
+        "operationId": "listOrganizationMembers",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Organization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Organizations list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Organization_MembersList"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
     "/organizations/{id}/oauthprovider": {
       "get": {
         "tags": [
@@ -4736,70 +5308,6 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Organization_OauthproviderList"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/organizations/{id}/org-memberships": {
-      "get": {
-        "tags": [
-          "Organization"
-        ],
-        "summary": "List attached OrgMemberships",
-        "description": "List attached OrgMemberships.",
-        "operationId": "listOrganizationOrgMemberships",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the Organization",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "what page to render",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "itemsPerPage",
-            "in": "query",
-            "description": "item count to render per page",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "result Organizations list",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Organization_OrgMembershipsList"
                   }
                 }
               }
@@ -5722,163 +6230,39 @@
         }
       }
     },
-    "/sessions": {
-      "get": {
-        "tags": [
-          "Session"
-        ],
-        "summary": "List Sessions",
-        "description": "List Sessions.",
-        "operationId": "listSession",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "what page to render",
-            "schema": {
-              "type": "integer",
-              "minimum": 1
-            }
-          },
-          {
-            "name": "itemsPerPage",
-            "in": "query",
-            "description": "item count to render per page",
-            "schema": {
-              "type": "integer",
-              "maximum": 255,
-              "minimum": 1
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "result Session list",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SessionList"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      },
+    "/register": {
+      "description": "Register a new user",
       "post": {
-        "tags": [
-          "Session"
-        ],
-        "summary": "Create a new Session",
-        "description": "Creates a new Session and persists it to storage.",
-        "operationId": "createSession",
-        "requestBody": {
-          "description": "Session to create",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "updated_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "created_by": {
-                    "type": "string"
-                  },
-                  "updated_by": {
-                    "type": "string"
-                  },
-                  "owner_id": {
-                    "type": "string"
-                  },
-                  "session_token": {
-                    "type": "string"
-                  },
-                  "issued_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "expires_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "organization_id": {
-                    "type": "string"
-                  },
-                  "owner": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "created_at",
-                  "updated_at",
-                  "owner_id",
-                  "session_token",
-                  "issued_at",
-                  "expires_at",
-                  "organization_id",
-                  "owner"
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Session created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SessionCreate"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/sessions/{id}": {
-      "get": {
-        "tags": [
-          "Session"
-        ],
-        "summary": "Find a Session by ID",
-        "description": "Finds the Session with the requested ID and returns it.",
-        "operationId": "readSession",
+        "summary": "Registration form submission for creating and validating a new user",
+        "operationId": "register",
         "parameters": [
           {
-            "name": "id",
+            "name": "email",
             "in": "path",
-            "description": "ID of the Session",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "first_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "last_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"
@@ -5887,187 +6271,41 @@
         ],
         "responses": {
           "200": {
-            "description": "Session with requested ID was found",
+            "description": "Registration submission successful",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionRead"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "user_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "user_id"
+                  ]
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Session"
-        ],
-        "summary": "Deletes a Session by ID",
-        "description": "Deletes the Session with the requested ID.",
-        "operationId": "deleteSession",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the Session",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Session with requested ID was deleted"
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Session"
-        ],
-        "summary": "Updates a Session",
-        "description": "Updates a Session and persists changes to storage.",
-        "operationId": "updateSession",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the Session",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Session properties to update",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "updated_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "updated_by": {
-                    "type": "string"
-                  },
-                  "owner_id": {
-                    "type": "string"
-                  },
-                  "issued_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "expires_at": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "organization_id": {
-                    "type": "string"
-                  },
-                  "owner": {
-                    "type": "string"
+            "description": "bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
                   }
                 }
               }
             }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Session updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SessionUpdate"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/sessions/{id}/owner": {
-      "get": {
-        "tags": [
-          "Session"
-        ],
-        "summary": "Find the attached User",
-        "description": "Find the attached User of the Session with the given ID",
-        "operationId": "readSessionOwner",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the Session",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "User attached to Session with requested ID was found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Session_OwnerRead"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -6188,20 +6426,8 @@
                     ],
                     "default": "ACTIVE"
                   },
-                  "role": {
-                    "type": "string",
-                    "enum": [
-                      "USER",
-                      "ADMIN",
-                      "OWNER"
-                    ],
-                    "default": "USER"
-                  },
-                  "permissions": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "default_org": {
+                    "type": "string"
                   },
                   "email_confirmed": {
                     "type": "boolean"
@@ -6221,8 +6447,6 @@
                   "updated_at",
                   "locked",
                   "status",
-                  "role",
-                  "permissions",
                   "email_confirmed",
                   "tags"
                 ]
@@ -6397,20 +6621,8 @@
                     ],
                     "default": "ACTIVE"
                   },
-                  "role": {
-                    "type": "string",
-                    "enum": [
-                      "USER",
-                      "ADMIN",
-                      "OWNER"
-                    ],
-                    "default": "USER"
-                  },
-                  "permissions": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "default_org": {
+                    "type": "string"
                   },
                   "email_confirmed": {
                     "type": "boolean"
@@ -6636,12 +6848,6 @@
                   },
                   "setting": {
                     "type": "string"
-                  },
-                  "sessions": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
                   },
                   "email_verification_tokens": {
                     "type": "array",
@@ -6880,12 +7086,6 @@
                   },
                   "setting": {
                     "type": "string"
-                  },
-                  "sessions": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
                   },
                   "email_verification_tokens": {
                     "type": "array",
@@ -7403,70 +7603,6 @@
         }
       }
     },
-    "/users/{id}/sessions": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "List attached Sessions",
-        "description": "List attached Sessions.",
-        "operationId": "listUserSessions",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the User",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "what page to render",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "itemsPerPage",
-            "in": "query",
-            "description": "item count to render per page",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "result Users list",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User_SessionsList"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "409": {
-            "$ref": "#/components/responses/409"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
     "/users/{id}/setting": {
       "get": {
         "tags": [
@@ -7893,11 +8029,11 @@
           "tier": {
             "type": "string",
             "enum": [
-              "free",
-              "pro",
-              "enterprise"
+              "FREE",
+              "PRO",
+              "ENTERPRISE"
             ],
-            "default": "free"
+            "default": "FREE"
           },
           "external_customer_id": {
             "type": "string"
@@ -7963,11 +8099,11 @@
           "tier": {
             "type": "string",
             "enum": [
-              "free",
-              "pro",
-              "enterprise"
+              "FREE",
+              "PRO",
+              "ENTERPRISE"
             ],
-            "default": "free"
+            "default": "FREE"
           },
           "external_customer_id": {
             "type": "string"
@@ -8029,11 +8165,11 @@
           "tier": {
             "type": "string",
             "enum": [
-              "free",
-              "pro",
-              "enterprise"
+              "FREE",
+              "PRO",
+              "ENTERPRISE"
             ],
-            "default": "free"
+            "default": "FREE"
           },
           "external_customer_id": {
             "type": "string"
@@ -8095,11 +8231,11 @@
           "tier": {
             "type": "string",
             "enum": [
-              "free",
-              "pro",
-              "enterprise"
+              "FREE",
+              "PRO",
+              "ENTERPRISE"
             ],
-            "default": "free"
+            "default": "FREE"
           },
           "external_customer_id": {
             "type": "string"
@@ -8161,11 +8297,11 @@
           "tier": {
             "type": "string",
             "enum": [
-              "free",
-              "pro",
-              "enterprise"
+              "FREE",
+              "PRO",
+              "ENTERPRISE"
             ],
-            "default": "free"
+            "default": "FREE"
           },
           "external_customer_id": {
             "type": "string"
@@ -8303,7 +8439,7 @@
               "$ref": "#/components/schemas/User"
             }
           },
-          "group_memberships": {
+          "members": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GroupMembership"
@@ -8451,10 +8587,16 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
               "MEMBER"
             ],
@@ -8504,10 +8646,16 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
               "MEMBER"
             ],
@@ -8549,10 +8697,16 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
               "MEMBER"
             ],
@@ -8594,10 +8748,16 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
               "MEMBER"
             ],
@@ -8639,10 +8799,16 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
               "MEMBER"
             ],
@@ -9303,7 +9469,7 @@
           "display_name"
         ]
       },
-      "Group_GroupMembershipsList": {
+      "Group_MembersList": {
         "type": "object",
         "properties": {
           "id": {
@@ -9323,10 +9489,16 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
               "MEMBER"
             ],
@@ -9784,6 +9956,445 @@
         ]
       },
       "Integration_OwnerRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "parent_organization_id": {
+            "type": "string"
+          },
+          "personal_org": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "name",
+          "display_name",
+          "personal_org"
+        ]
+      },
+      "Invite": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "INVITATION_SENT",
+              "APPROVAL_REQUIRED",
+              "INVITATION_ACCEPTED",
+              "INVITATION_EXPIRED"
+            ],
+            "default": "INVITATION_SENT"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "MEMBER",
+              "OWNER"
+            ],
+            "default": "MEMBER"
+          },
+          "send_attempts": {
+            "type": "integer"
+          },
+          "requestor_id": {
+            "type": "string"
+          },
+          "secret": {
+            "type": "string",
+            "format": "byte"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/Organization"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "owner_id",
+          "token",
+          "recipient",
+          "status",
+          "role",
+          "send_attempts",
+          "requestor_id",
+          "owner"
+        ]
+      },
+      "InviteCreate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "INVITATION_SENT",
+              "APPROVAL_REQUIRED",
+              "INVITATION_ACCEPTED",
+              "INVITATION_EXPIRED"
+            ],
+            "default": "INVITATION_SENT"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "MEMBER",
+              "OWNER"
+            ],
+            "default": "MEMBER"
+          },
+          "send_attempts": {
+            "type": "integer"
+          },
+          "requestor_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "owner_id",
+          "recipient",
+          "status",
+          "role",
+          "send_attempts",
+          "requestor_id"
+        ]
+      },
+      "InviteList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "INVITATION_SENT",
+              "APPROVAL_REQUIRED",
+              "INVITATION_ACCEPTED",
+              "INVITATION_EXPIRED"
+            ],
+            "default": "INVITATION_SENT"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "MEMBER",
+              "OWNER"
+            ],
+            "default": "MEMBER"
+          },
+          "send_attempts": {
+            "type": "integer"
+          },
+          "requestor_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "owner_id",
+          "recipient",
+          "status",
+          "role",
+          "send_attempts",
+          "requestor_id"
+        ]
+      },
+      "InviteRead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "INVITATION_SENT",
+              "APPROVAL_REQUIRED",
+              "INVITATION_ACCEPTED",
+              "INVITATION_EXPIRED"
+            ],
+            "default": "INVITATION_SENT"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "MEMBER",
+              "OWNER"
+            ],
+            "default": "MEMBER"
+          },
+          "send_attempts": {
+            "type": "integer"
+          },
+          "requestor_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "owner_id",
+          "recipient",
+          "status",
+          "role",
+          "send_attempts",
+          "requestor_id"
+        ]
+      },
+      "InviteUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "INVITATION_SENT",
+              "APPROVAL_REQUIRED",
+              "INVITATION_ACCEPTED",
+              "INVITATION_EXPIRED"
+            ],
+            "default": "INVITATION_SENT"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "MEMBER",
+              "OWNER"
+            ],
+            "default": "MEMBER"
+          },
+          "send_attempts": {
+            "type": "integer"
+          },
+          "requestor_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "owner_id",
+          "recipient",
+          "status",
+          "role",
+          "send_attempts",
+          "requestor_id"
+        ]
+      },
+      "Invite_OwnerRead": {
         "type": "object",
         "properties": {
           "id": {
@@ -10605,22 +11216,29 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
-              "MEMBER"
+              "MEMBER",
+              "OWNER"
             ],
             "default": "MEMBER"
           },
-          "org_id": {
+          "organization_id": {
             "type": "string"
           },
           "user_id": {
             "type": "string"
           },
-          "org": {
+          "organization": {
             "$ref": "#/components/schemas/Organization"
           },
           "user": {
@@ -10632,9 +11250,9 @@
           "created_at",
           "updated_at",
           "role",
-          "org_id",
+          "organization_id",
           "user_id",
-          "org",
+          "organization",
           "user"
         ]
       },
@@ -10658,16 +11276,23 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
-              "MEMBER"
+              "MEMBER",
+              "OWNER"
             ],
             "default": "MEMBER"
           },
-          "org_id": {
+          "organization_id": {
             "type": "string"
           },
           "user_id": {
@@ -10679,7 +11304,7 @@
           "created_at",
           "updated_at",
           "role",
-          "org_id",
+          "organization_id",
           "user_id"
         ]
       },
@@ -10703,16 +11328,23 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
-              "MEMBER"
+              "MEMBER",
+              "OWNER"
             ],
             "default": "MEMBER"
           },
-          "org_id": {
+          "organization_id": {
             "type": "string"
           },
           "user_id": {
@@ -10724,7 +11356,7 @@
           "created_at",
           "updated_at",
           "role",
-          "org_id",
+          "organization_id",
           "user_id"
         ]
       },
@@ -10748,16 +11380,23 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
-              "MEMBER"
+              "MEMBER",
+              "OWNER"
             ],
             "default": "MEMBER"
           },
-          "org_id": {
+          "organization_id": {
             "type": "string"
           },
           "user_id": {
@@ -10769,7 +11408,7 @@
           "created_at",
           "updated_at",
           "role",
-          "org_id",
+          "organization_id",
           "user_id"
         ]
       },
@@ -10793,16 +11432,23 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
-              "MEMBER"
+              "MEMBER",
+              "OWNER"
             ],
             "default": "MEMBER"
           },
-          "org_id": {
+          "organization_id": {
             "type": "string"
           },
           "user_id": {
@@ -10814,11 +11460,11 @@
           "created_at",
           "updated_at",
           "role",
-          "org_id",
+          "organization_id",
           "user_id"
         ]
       },
-      "OrgMembership_OrgRead": {
+      "OrgMembership_OrganizationRead": {
         "type": "object",
         "properties": {
           "id": {
@@ -11025,7 +11671,13 @@
               "$ref": "#/components/schemas/User"
             }
           },
-          "org_memberships": {
+          "invites": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invite"
+            }
+          },
+          "members": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OrgMembership"
@@ -11739,11 +12391,11 @@
           "tier": {
             "type": "string",
             "enum": [
-              "free",
-              "pro",
-              "enterprise"
+              "FREE",
+              "PRO",
+              "ENTERPRISE"
             ],
-            "default": "free"
+            "default": "FREE"
           },
           "external_customer_id": {
             "type": "string"
@@ -11875,6 +12527,133 @@
           "secret_name"
         ]
       },
+      "Organization_InvitesList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "INVITATION_SENT",
+              "APPROVAL_REQUIRED",
+              "INVITATION_ACCEPTED",
+              "INVITATION_EXPIRED"
+            ],
+            "default": "INVITATION_SENT"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "MEMBER",
+              "OWNER"
+            ],
+            "default": "MEMBER"
+          },
+          "send_attempts": {
+            "type": "integer"
+          },
+          "requestor_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "owner_id",
+          "recipient",
+          "status",
+          "role",
+          "send_attempts",
+          "requestor_id"
+        ]
+      },
+      "Organization_MembersList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "MEMBER",
+              "OWNER"
+            ],
+            "default": "MEMBER"
+          },
+          "organization_id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "role",
+          "organization_id",
+          "user_id"
+        ]
+      },
       "Organization_OauthproviderList": {
         "type": "object",
         "properties": {
@@ -11946,51 +12725,6 @@
           "token_url",
           "auth_style",
           "info_url"
-        ]
-      },
-      "Organization_OrgMembershipsList": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "OWNER",
-              "ADMIN",
-              "MEMBER"
-            ],
-            "default": "MEMBER"
-          },
-          "org_id": {
-            "type": "string"
-          },
-          "user_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "role",
-          "org_id",
-          "user_id"
         ]
       },
       "Organization_ParentRead": {
@@ -12905,326 +13639,6 @@
           "oauth"
         ]
       },
-      "Session": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "owner_id": {
-            "type": "string"
-          },
-          "session_token": {
-            "type": "string"
-          },
-          "issued_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expires_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "organization_id": {
-            "type": "string"
-          },
-          "owner": {
-            "$ref": "#/components/schemas/User"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "owner_id",
-          "session_token",
-          "issued_at",
-          "expires_at",
-          "organization_id",
-          "owner"
-        ]
-      },
-      "SessionCreate": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "owner_id": {
-            "type": "string"
-          },
-          "session_token": {
-            "type": "string"
-          },
-          "issued_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expires_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "organization_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "owner_id",
-          "session_token",
-          "issued_at",
-          "expires_at",
-          "organization_id"
-        ]
-      },
-      "SessionList": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "owner_id": {
-            "type": "string"
-          },
-          "session_token": {
-            "type": "string"
-          },
-          "issued_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expires_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "organization_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "owner_id",
-          "session_token",
-          "issued_at",
-          "expires_at",
-          "organization_id"
-        ]
-      },
-      "SessionRead": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "owner_id": {
-            "type": "string"
-          },
-          "session_token": {
-            "type": "string"
-          },
-          "issued_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expires_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "organization_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "owner_id",
-          "session_token",
-          "issued_at",
-          "expires_at",
-          "organization_id"
-        ]
-      },
-      "SessionUpdate": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "owner_id": {
-            "type": "string"
-          },
-          "session_token": {
-            "type": "string"
-          },
-          "issued_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expires_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "organization_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "owner_id",
-          "session_token",
-          "issued_at",
-          "expires_at",
-          "organization_id"
-        ]
-      },
-      "Session_OwnerRead": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "deleted_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "deleted_by": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "first_name": {
-            "type": "string"
-          },
-          "last_name": {
-            "type": "string"
-          },
-          "display_name": {
-            "type": "string"
-          },
-          "avatar_remote_url": {
-            "type": "string"
-          },
-          "avatar_local_file": {
-            "type": "string"
-          },
-          "avatar_updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "last_seen": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "sub": {
-            "type": "string"
-          },
-          "oauth": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "email",
-          "first_name",
-          "last_name",
-          "display_name",
-          "oauth"
-        ]
-      },
       "User": {
         "type": "object",
         "properties": {
@@ -13295,12 +13709,6 @@
           },
           "setting": {
             "$ref": "#/components/schemas/UserSetting"
-          },
-          "sessions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Session"
-            }
           },
           "email_verification_tokens": {
             "type": "array",
@@ -13615,20 +14023,8 @@
             ],
             "default": "ACTIVE"
           },
-          "role": {
-            "type": "string",
-            "enum": [
-              "USER",
-              "ADMIN",
-              "OWNER"
-            ],
-            "default": "USER"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "default_org": {
+            "type": "string"
           },
           "email_confirmed": {
             "type": "boolean"
@@ -13649,8 +14045,6 @@
           "updated_at",
           "locked",
           "status",
-          "role",
-          "permissions",
           "email_confirmed",
           "tags"
         ]
@@ -13703,20 +14097,8 @@
             ],
             "default": "ACTIVE"
           },
-          "role": {
-            "type": "string",
-            "enum": [
-              "USER",
-              "ADMIN",
-              "OWNER"
-            ],
-            "default": "USER"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "default_org": {
+            "type": "string"
           },
           "email_confirmed": {
             "type": "boolean"
@@ -13734,8 +14116,6 @@
           "updated_at",
           "locked",
           "status",
-          "role",
-          "permissions",
           "email_confirmed",
           "tags"
         ]
@@ -13788,20 +14168,8 @@
             ],
             "default": "ACTIVE"
           },
-          "role": {
-            "type": "string",
-            "enum": [
-              "USER",
-              "ADMIN",
-              "OWNER"
-            ],
-            "default": "USER"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "default_org": {
+            "type": "string"
           },
           "email_confirmed": {
             "type": "boolean"
@@ -13819,8 +14187,6 @@
           "updated_at",
           "locked",
           "status",
-          "role",
-          "permissions",
           "email_confirmed",
           "tags"
         ]
@@ -13873,20 +14239,8 @@
             ],
             "default": "ACTIVE"
           },
-          "role": {
-            "type": "string",
-            "enum": [
-              "USER",
-              "ADMIN",
-              "OWNER"
-            ],
-            "default": "USER"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "default_org": {
+            "type": "string"
           },
           "email_confirmed": {
             "type": "boolean"
@@ -13904,8 +14258,6 @@
           "updated_at",
           "locked",
           "status",
-          "role",
-          "permissions",
           "email_confirmed",
           "tags"
         ]
@@ -13958,20 +14310,8 @@
             ],
             "default": "ACTIVE"
           },
-          "role": {
-            "type": "string",
-            "enum": [
-              "USER",
-              "ADMIN",
-              "OWNER"
-            ],
-            "default": "USER"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "default_org": {
+            "type": "string"
           },
           "email_confirmed": {
             "type": "boolean"
@@ -13989,8 +14329,6 @@
           "updated_at",
           "locked",
           "status",
-          "role",
-          "permissions",
           "email_confirmed",
           "tags"
         ]
@@ -14211,10 +14549,16 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
               "MEMBER"
             ],
@@ -14311,16 +14655,23 @@
           "updated_by": {
             "type": "string"
           },
+          "deleted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_by": {
+            "type": "string"
+          },
           "role": {
             "type": "string",
             "enum": [
-              "OWNER",
               "ADMIN",
-              "MEMBER"
+              "MEMBER",
+              "OWNER"
             ],
             "default": "MEMBER"
           },
-          "org_id": {
+          "organization_id": {
             "type": "string"
           },
           "user_id": {
@@ -14332,7 +14683,7 @@
           "created_at",
           "updated_at",
           "role",
-          "org_id",
+          "organization_id",
           "user_id"
         ]
       },
@@ -14501,55 +14852,6 @@
           "name"
         ]
       },
-      "User_SessionsList": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "updated_by": {
-            "type": "string"
-          },
-          "owner_id": {
-            "type": "string"
-          },
-          "session_token": {
-            "type": "string"
-          },
-          "issued_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expires_at": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "organization_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "owner_id",
-          "session_token",
-          "issued_at",
-          "expires_at",
-          "organization_id"
-        ]
-      },
       "User_SettingRead": {
         "type": "object",
         "properties": {
@@ -14598,20 +14900,8 @@
             ],
             "default": "ACTIVE"
           },
-          "role": {
-            "type": "string",
-            "enum": [
-              "USER",
-              "ADMIN",
-              "OWNER"
-            ],
-            "default": "USER"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "default_org": {
+            "type": "string"
           },
           "email_confirmed": {
             "type": "boolean"
@@ -14629,8 +14919,6 @@
           "updated_at",
           "locked",
           "status",
-          "role",
-          "permissions",
           "email_confirmed",
           "tags"
         ]
