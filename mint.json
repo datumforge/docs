@@ -16,7 +16,7 @@
     }
   },
   "feedback": {
-    "suggestEdit": true,
+    "suggestEdit": false,
     "raiseIssue": true
   },
   "openapi": "/openapi.json",
