@@ -1,6 +1,6 @@
 # Datum Documentation
 
-This repository houses the markdown and repsective configuration files for using mintlify which deploy's Datum's current public wiki @ docs.datum.net
+This repository houses the markdown and respective configuration files for using mintlify which deploy's Datum's current public wiki @ docs.datum.net
 
 ## Updating the Documentation
 
