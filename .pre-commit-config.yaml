@@ -1,0 +1,10 @@
+default_stages: [pre-commit]
+fail_fast: true
+default_language_version:
+  golang: system
+
+repos:
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.22.9
+    hooks:
+      - id: typos
